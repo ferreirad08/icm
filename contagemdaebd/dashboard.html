@@ -452,7 +452,7 @@
     }
 
     function removeDate(date, day) {
-      if (window.confirm(`Você realmente deseja apagar o registro do dia ${day}?`)) {
+      if (window.confirm(`Você realmente deseja apagar o registro do dia ${day.split("-").reverse().join("/")}?`)) {
         delete data.count[date];
         localStorage.setItem(storageKey, JSON.stringify(data));
         populate();
