@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+
+    <script>
+      const code = window.location.hash.slice(1);
+      const url = `https://api.jsonbin.io/v3/b/${code}`;
+
+      const headers = {
+        "Content-Type": "application/json",
+        "X-Access-Key":
+          "$2a$10$hAT1PQtTWY.vtq5BTEeJruDlB.ULfWMknzape/RRM.Xa.xEpds7rG",
+      };
+
+      async function getData() {
+        return (await (await fetch(url, { method: "GET", headers })).json())
+          .record;
+      }
+
+      function json2pdf(data) {
+        const TZ =
+          Intl.DateTimeFormat().resolvedOptions().timeZone ||
+          "America/Sao_Paulo";
+        const NBSP = "\u00A0";
+        const { jsPDF } = window.jspdf;
+
+        const toRows = (list) =>
+          Object.entries(list).map(([h, n]) => [
+            h,
+            n == null || String(n).trim() === "" ? NBSP : String(n),
+          ]);
+
+        const allRows = toRows(data.currentList);
+
+        const doc = new jsPDF({
+          orientation: "portrait",
+          unit: "pt",
+          format: "a4",
+        });
+        const pageW = doc.internal.pageSize.getWidth();
+        const pageH = doc.internal.pageSize.getHeight();
+
+        const margin = { left: 36, right: 36, top: 36, bottom: 24 };
+        const gap = 18;
+        const usableW = pageW - margin.left - margin.right;
+        const colW = (usableW - gap) / 2;
+
+        const tableBase = {
+          head: [["Horário", "Nome"]],
+          styles: { fontSize: 8, cellPadding: 1.8, lineWidth: 0.1 },
+          headStyles: {
+            fillColor: [21, 27, 84],
+            textColor: 255,
+            fontSize: 8.5,
+          },
+          columnStyles: { 0: { cellWidth: 70 }, 1: { cellWidth: colW - 70 } },
+          theme: "striped",
+          pageBreak: "avoid",
+          rowPageBreak: "avoid",
+          tableWidth: colW,
+        };
+
+        const ROWS_PER_COL = 48;
+        const ROWS_PER_PAGE = 96;
+        const numPages = Math.ceil(allRows.length / ROWS_PER_PAGE);
+
+        for (let p = 0; p < numPages; p++) {
+          if (p > 0) doc.addPage();
+          const slice = allRows.slice(
+            p * ROWS_PER_PAGE,
+            (p + 1) * ROWS_PER_PAGE
+          );
+          const left = slice.slice(0, ROWS_PER_COL);
+          const right = slice.slice(ROWS_PER_COL, ROWS_PER_PAGE);
+
+          let y = margin.top;
+          doc.setFont("helvetica", "bold");
+          doc.setFontSize(13);
+          doc.text(
+            `Escala da Oração Ininterrupta - ${data.igreja}`,
+            margin.left,
+            y
+          );
+
+          y += 14;
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(9);
+          doc.text(`Motivo: ${data.motivo}`, margin.left, y);
+
+          y += 12;
+          doc.text(
+            `Período: ${data.date0
+              .split("-")
+              .reverse()
+              .join("/")} - ${data.date1.split("-").reverse().join("/")}`,
+            margin.left,
+            y
+          );
+
+          y += 24;
+          const topY = y + 10;
+
+          doc.autoTable({
+            ...tableBase,
+            startY: topY,
+            margin: { left: margin.left },
+            body: left,
+          });
+
+          doc.autoTable({
+            ...tableBase,
+            startY: topY,
+            margin: { left: margin.left + colW + gap },
+            body: right,
+          });
+
+          doc.setFontSize(8);
+          doc.text(`Página ${p + 1} / ${numPages}`, pageW - 60, pageH - 10);
+        }
+
+        try {
+          const _timestamp = new Date().toISOString();
+          doc.save(`escala_${_timestamp}.pdf`);
+        } catch {}
+      }
+
+      async function main() {
+        const data = await getData();
+
+        if (data) {
+          json2pdf(data);
+        }
+
+        window.location.href = `https://ferreirad08.github.io/icm/oracaoininterrupta/escala#${code}`;
+      }
+
+      main();
+    </script>
+  </body>
+</html>
