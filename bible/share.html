@@ -41,6 +41,10 @@
         background-repeat: no-repeat;
       }
 
+      td {
+        vertical-align: center;
+      }
+
       #div {
         background-color: rgba(0, 0, 0, 0.4);
         color: #ffffff;
@@ -93,21 +97,31 @@
         height: 56px;
         margin-top: -12px;
         aspect-ratio: 1 / 1;
-        background-color: #ffffff;
+        background-color: #fff;
         border: 2px solid #151b54;
         text-align: center;
       }
 
       button {
         background-color: #151b54;
-        color: #ffffff;
+        color: #fff;
         border: none;
-        width: 145px;
-        margin-left: calc(50% - 175px);
         height: 40px;
         border-radius: 40px;
         font-weight: bold;
-        text-align: center;
+        font-size: 12px;
+        padding-left: 13px;
+        padding-right: 13px;
+      }
+
+      .left-button {
+        margin-left: calc(50% - 175px);
+      }
+
+      .position-button{
+        background-color: #fff;
+        color: #151b54;
+        border: 2px solid #151b54;
       }
     </style>
     <meta charset="utf-8" />
@@ -121,7 +135,7 @@
 
     <table id="table">
       <tr>
-        <td>
+        <td id="image_td">
           <div id="div"></div>
         </td>
       </tr>
@@ -178,13 +192,27 @@
     </table>
 
     <br />
+    <label>Posição</label>
+
+    <br /><br />
+    <button class="left-button position-button" onclick="setPosition('top')">
+      <i class="bi bi-align-top"></i>&emsp;Superior
+    </button>
+    <button class="position-button" onclick="setPosition('middle')">
+      <i class="bi bi-align-middle"></i>&emsp;Meio
+    </button>
+    <button class="position-button" onclick="setPosition('bottom')">
+      <i class="bi bi-align-bottom"></i>&emsp;Inferior
+    </button>
+
+    <br /><br />
     <label>Tamanho da fonte</label>
 
     <br />
     <input type="range" min="1" max="30" value="16" oninput="setFont(this)" />
 
     <br />
-    <button id="button_1" onclick="share()">
+    <button class="left-button" onclick="share()">
       <i class="bi bi-share"></i>&emsp;Compartilhar
     </button>
 
@@ -219,6 +247,10 @@
           reader.readAsDataURL(files[0]);
           document.getElementById("upload").value = null;
         }
+      }
+
+      function setPosition(position) {
+        document.getElementById("image_td").style.verticalAlign = position;
       }
 
       function setFont(obj) {
