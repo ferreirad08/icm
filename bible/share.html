@@ -42,7 +42,7 @@
       }
 
       #div {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.4);
         color: #ffffff;
         padding: 5px 5px 5px 5px;
         text-align: center;
@@ -245,17 +245,6 @@
                 navigator.share({ files, url });
               });
             });
-          }
-        );
-      }
-
-      function downloadJPG() {
-        html2canvas(document.getElementById("table"), { scale: 10 }).then(
-          function (canvas) {
-            const a = document.createElement("a");
-            a.download = `${new Date().toISOString()}.jpg`;
-            a.href = canvas.toDataURL("image/jpeg");
-            a.click();
           }
         );
       }
