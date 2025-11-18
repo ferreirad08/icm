@@ -57,10 +57,11 @@
         background-color: #151b54;
         color: #ffffff;
         border: none;
-        width: calc(173px * 2.3);
         height: calc(40px * 2.6);
         border-radius: calc(100px * 2.6);
         font-size: 35px;
+        padding-left: 40px;
+        padding-right: 40px;
         font-weight: bold;
         margin-right: 10px;
       }
@@ -90,18 +91,17 @@
     <canvas id="canvas" width="960" height="720"></canvas>
 
     <div id="break1"></div>
-    <button id="button_0" onclick="_clean()">Limpar escala</button>
-    <button id="button_1" onclick="downloadJPG()"><i class='bi bi-download'></i>&emsp;Baixar imagem</button>
+    <button id="button_0" onclick="_clean()">Limpar</button>
+    <button id="button_1" onclick="downloadJPG()"><i class='bi bi-download'></i>&ensp;Baixar</button>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <script src="background.js"></script>
+    <div id="break2"></div>
     <a href="https://clustrmaps.com/site/1c69z"  title="ClustrMaps"><img width="500" src="//www.clustrmaps.com/map_v2.png?d=E3S4teRBru0eEaayxZyt1lCfO_CtVpgKglAJaekmpjY&cl=ffffff" /></a>
+
+    <script src="background.js"></script>
     <script>
       document.getElementById("break0").innerHTML = "<br />".repeat(13);
-      document.getElementById("break1").innerHTML = "<br />".repeat(6);
+      document.getElementById("break1").innerHTML = "<br />".repeat(3);
+      document.getElementById("break2").innerHTML = "<br />".repeat(6);
 
       const flowersStorageKey = "escaladeflores";
       const fontHeader = "50px Times New Roman";
