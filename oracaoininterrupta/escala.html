@@ -201,7 +201,7 @@
     <div class="info">
       Igreja<br /><label></label> <br /><br />
       Motivo<br /><b><label></label></b> <br /><br />
-      Período (primeiro e último dia)<br /><label></label> <br /><br /><br />
+      Período (primeiro e último dia)<br /><label></label> <label></label> <br /><br /><br />
       <label></label>
       <br />
       <label></label>
@@ -510,16 +510,23 @@ ${window.location.href}`;
           data.date0.split("-").reverse().join("/") +
           " - " +
           data.date1.split("-").reverse().join("/");
+
         els[3].innerHTML =
-          "<i class='bi bi-clock-history'></i> Último registro: " +
-          formatDate(data.timestamp);
+  new Date() < new Date(data.date0)
+    ? '<span style="background:rgba(128,128,128,0.25); color:#555; padding:1px 3px; border-radius:20px">não iniciado</span>'
+    : new Date() > new Date(data.date1)
+    ? '<span style="background:rgba(220,53,69,0.25); color:#a30012; padding:1px 3px; border-radius:20px">encerrado</span>'
+    : '<span style="background:rgba(40,167,69,0.25); color:#0f5c2b; padding:1px 3px; border-radius:20px">iniciado</span>';
 
         const nullCount = Object.values(data.currentList).filter(
           (v) => v
         ).length;
         const percentage = Math.round((nullCount / 96) * 1000, 3) / 10;
-
         els[4].innerHTML = `<i class='bi bi-list-check'></i> Horários preenchidos: ${nullCount} de 96 (${percentage}%)`;
+
+        els[5].innerHTML =
+          "<i class='bi bi-clock-history'></i> Último registro: " +
+          formatDate(data.timestamp);
       }
 
       async function main() {
