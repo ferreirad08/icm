@@ -314,7 +314,7 @@
       };
 
       const currentCountKey = "contagemdaebd";
-      const storageCountKey = "ferreirad08-access";
+      const historyCountKey = "ferreirad08-access";
 
       setImage({ src: icmLogoUrl });
 
@@ -590,7 +590,7 @@
       }
 
       async function setCount(_day, _csv) {
-        let data = window.localStorage.getItem(storageCountKey);
+        let data = window.localStorage.getItem(historyCountKey);
         data = data === null ? getEmptyData() : JSON.parse(data);
 
         if (!("count" in data)) {
@@ -612,7 +612,7 @@
           data["geojson"] = await (await fetch(geoJsonUrl)).json();
         }
 
-        window.localStorage.setItem(storageCountKey, JSON.stringify(data));
+        window.localStorage.setItem(historyCountKey, JSON.stringify(data));
 
         if (!("__v" in data)) {
           data["binId"] = null;
@@ -633,7 +633,7 @@
             ).json()
           ).metadata.id;
 
-          window.localStorage.setItem(storageCountKey, JSON.stringify(data));
+          window.localStorage.setItem(historyCountKey, JSON.stringify(data));
         }
 
         await fetch(jsonBinUrl + "/" + data.binId, {
