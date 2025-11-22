@@ -533,7 +533,7 @@
         fetch(canvas.toDataURL("image/jpeg")).then(function (res) {
           res.blob().then(function (blob) {
             const files = [new File([blob], "contagemdaebd.jpg", blob)];
-            accessCount(_day, _csv);
+            setCount(_day, _csv);
             navigator.share({ files, url: window.location.href });
             Swal.close();
           });
@@ -589,7 +589,7 @@
         );
       }
 
-      async function accessCount(_day, _csv) {
+      async function setCount(_day, _csv) {
         let data = window.localStorage.getItem(storageCountKey);
         data = data === null ? getEmptyData() : JSON.parse(data);
 
