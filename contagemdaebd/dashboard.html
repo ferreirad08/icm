@@ -549,37 +549,9 @@
         rows.forEach((row) => tbody.appendChild(row));
       }
 
-      data = {
-  "id": "6924df85968b4c5c733be482",
-  "count": {
-    "2025-11-24T22:43:17.179Z": "Cavaleiro,2025-11-24,1,0,2,4,12,8,0,0,0,0,0,0,",
-    "2025-11-24T23:13:39.141Z": "Cavaleiro,2025-11-24,1,0,2,4,12,8,0,0,0,0,0,0,",
-    "2025-11-24T23:14:11.347Z": "Cavaleiro,2025-11-24,1,0,2,4,12,8,0,0,0,0,0,0,"
-  },
-  "geojson": {
-    "region": "Pernambuco",
-    "latitude": "-8.0009",
-    "longitude": "-34.8687",
-    "accuracy": 20,
-    "country": "Brazil",
-    "city": "Recife",
-    "asn": 26599,
-    "organization": "AS26599 TELEFONICA BRASIL S.A",
-    "ip": "2804:18:701a:2bf5:1:0:e480:fa49",
-    "timezone": "America/Recife",
-    "area_code": "0",
-    "organization_name": "TELEFONICA BRASIL S.A",
-    "country_code": "BR",
-    "country_code3": "BRA",
-    "continent_code": "SA"
-  },
-  "binId": "6924df86ae596e708f6ea88c",
-  "__v": 3
-}
-
       function main() {
         if (data) {
-          // data = JSON.parse(data);
+          data = JSON.parse(data);
 
           if ("count" in data) {
             populate();
