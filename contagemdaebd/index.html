@@ -116,16 +116,21 @@
         width: 200px;
       }
 
-      .meu-confirmar {
-        width: 145px;
+      .meu-confirmar,
+      .meu-cancelar {
         border-radius: 20px !important;
+        font-size: 12px;
+        padding-left: 13px;
+        padding-right: 13px;
+        width: 130px;
+      }
+
+      .meu-confirmar {
         background-color: #151b54;
         color: white;
       }
 
       .meu-cancelar {
-        width: 145px;
-        border-radius: 20px !important;
         background-color: white;
         color: #151b54;
         border: 2px solid #151b54;
@@ -483,8 +488,8 @@
           icon: "question",
           showCancelButton: true,
           reverseButtons: true,
-          confirmButtonText: "Sim, limpar!",
-          cancelButtonText: "Cancelar",
+          confirmButtonText: `<i class="bi bi-check-lg"></i>&ensp;Sim, limpar`,
+          cancelButtonText: `<i class="bi bi-x-lg"></i>&ensp;Não, cancelar`,
           customClass: {
             confirmButton: "meu-confirmar",
             cancelButton: "meu-cancelar",
