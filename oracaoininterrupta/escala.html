@@ -539,6 +539,7 @@ ${window.location.href}`;
         // await sleep(5000);
 
         const data = await getData();
+        console.log(JSON.stringify(data));
 
         if (!data) {
           await Swal.fire({
