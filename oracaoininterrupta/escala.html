@@ -342,12 +342,12 @@ ${window.location.href}`;
         });
       }
 
-      async function getData() {
+      async function getDataOld() {
         return (await (await fetch(url, { method: "GET", headers })).json())
           .record;
       }
 
-      async function getDataAws() {
+      async function getData() {
         return (await (await fetch(awsUrl, { method: "GET" })).json())
           .body;
       }
