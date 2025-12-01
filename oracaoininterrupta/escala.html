@@ -257,6 +257,7 @@
     <script>
       const code = window.location.hash.slice(1);
       const url = `https://api.jsonbin.io/v3/b/${code}`;
+      const awsUrl = `https://ify6zo6eldz6b3n5r6ypgeab640ztpri.lambda-url.us-east-1.on.aws/?code=${code}`;
 
       const headers = {
         "Content-Type": "application/json",
@@ -344,6 +345,11 @@ ${window.location.href}`;
       async function getData() {
         return (await (await fetch(url, { method: "GET", headers })).json())
           .record;
+      }
+
+      async function getDataAws() {
+        return (await (await fetch(awsUrl, { method: "GET" })).json())
+          .body;
       }
 
       async function removeRegister(interval, name) {
