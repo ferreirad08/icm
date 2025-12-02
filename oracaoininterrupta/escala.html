@@ -257,12 +257,11 @@
     <script>
       const code = window.location.hash.slice(1);
       const url = `https://api.jsonbin.io/v3/b/${code}`;
-      const awsUrl = `https://ify6zo6eldz6b3n5r6ypgeab640ztpri.lambda-url.us-east-1.on.aws/?code=${code}`;
 
       const headers = {
         "Content-Type": "application/json",
         "X-Access-Key":
-          "$2a$10$LfB9pdrUiu066R6K8lu9cOnlKiXIdSxewVhiRKUfxAhQkpgNFCXxe",
+          "$2a$10$hAT1PQtTWY.vtq5BTEeJruDlB.ULfWMknzape/RRM.Xa.xEpds7rG",
       };
       const storageKey = "oracaoininterruptav3";
       //window.localStorage.removeItem(storageKey);
@@ -342,18 +341,9 @@ ${window.location.href}`;
         });
       }
 
-      async function getDataOld() {
+      async function getData() {
         return (await (await fetch(url, { method: "GET", headers })).json())
           .record;
-      }
-
-      async function getData() {
-        try {
-          return (await (await fetch(awsUrl + "&m=2", { method: "GET" })).json());
-        } catch (e) {
-          console.error(e);
-          return null;
-        }
       }
 
       async function removeRegister(interval, name) {
@@ -543,7 +533,6 @@ ${window.location.href}`;
         // await sleep(5000);
 
         const data = await getData();
-        console.log(JSON.stringify(data));
 
         if (!data) {
           await Swal.fire({
