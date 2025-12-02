@@ -348,7 +348,12 @@ ${window.location.href}`;
       }
 
       async function getData() {
-        return (await (await fetch(awsUrl, { method: "GET" })).json());
+        try {
+          return (await (await fetch(awsUrl, { method: "GET" })).json());
+        } catch (e) {
+          console.error(e);
+          return null;
+        }
       }
 
       async function removeRegister(interval, name) {
