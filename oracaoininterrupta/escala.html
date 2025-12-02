@@ -349,7 +349,7 @@ ${window.location.href}`;
 
       async function getData() {
         try {
-          return (await (await fetch(awsUrl, { method: "GET" })).json());
+          return (await (await fetch(awsUrl + "&m=2", { method: "GET" })).json());
         } catch (e) {
           console.error(e);
           return null;
