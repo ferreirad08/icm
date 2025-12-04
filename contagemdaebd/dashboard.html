@@ -567,20 +567,16 @@
       }
 
       async function main() {
-        const dataRemote = await getData();
-        console.log(JSON.stringify(dataRemote));
+        if (data) {
+          data = JSON.parse(data);
+        }
 
+        const dataRemote = await getData();
         if (dataRemote) {
-          if (dataRemote.count) {
-            populate();
-            sortTable();
-            return;
-          }
+          data = dataRemote;
         }
 
         if (data) {
-          data = JSON.parse(data);
-
           if ("count" in data) {
             populate();
             sortTable();
