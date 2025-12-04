@@ -126,13 +126,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script>
+      const code = window.location.hash.slice(1);
+      const url = `https://api.jsonbin.io/v3/b/${code}`;
+
+      const headers = {
+        "Content-Type": "application/json",
+        "X-Access-Key":
+          "$2a$10$LfB9pdrUiu066R6K8lu9cOnlKiXIdSxewVhiRKUfxAhQkpgNFCXxe",
+      };
+
       tbody = document.getElementById("tbody");
       const storageKey = "ferreirad08-access";
       let data = localStorage.getItem(storageKey);
+
       const cumulative = new Chart(
         "cumulative",
         getOptions("Frequência diária (Total)")
       );
+
       const cumulativeVisitors = new Chart(
         "cumulativeVisitors",
         getOptions("Frequência diária (Visitantes)")
@@ -147,6 +158,7 @@
         "sexta-feira",
         "sábado",
       ];
+
       //const code = window.location.hash.slice(1);
       //alert(fromBase64(code));
 
@@ -549,7 +561,22 @@
         rows.forEach((row) => tbody.appendChild(row));
       }
 
-      function main() {
+      async function getData() {
+        return (await (await fetch(url, { method: "GET", headers })).json())
+          .record;
+      }
+
+      async function main() {
+        const dataRemote = await getData();
+
+        if (dataRemote) {
+          if (dataRemote.count) {
+            populate();
+            sortTable();
+            return;
+          }
+        }
+
         if (data) {
           data = JSON.parse(data);
 
