@@ -568,6 +568,7 @@
 
       async function main() {
         const dataRemote = await getData();
+        console.log(JSON.stringify(dataRemote));
 
         if (dataRemote) {
           if (dataRemote.count) {
