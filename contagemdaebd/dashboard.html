@@ -571,9 +571,11 @@
           data = JSON.parse(data);
         }
 
-        const dataRemote = await getData();
-        if (dataRemote) {
-          data = dataRemote;
+        if (code) {
+          const dataRemote = await getData();
+          if (dataRemote) {
+            data = dataRemote;
+          }
         }
 
         if (data) {
