@@ -150,13 +150,13 @@
       );
 
       const week = [
-        "domingo",
-        "segunda-feira",
-        "terça-feira",
-        "quarta-feira",
-        "quinta-feira",
-        "sexta-feira",
-        "sábado",
+        "dom",
+        "seg",
+        "ter",
+        "qua",
+        "qui",
+        "sex",
+        "sáb",
       ];
 
       //const code = window.location.hash.slice(1);
@@ -477,14 +477,14 @@
 
           cell1.innerHTML = name;
           cell2.innerHTML = d;
-          cell11.innerHTML = week[dayOfWeek];
+          cell11.innerHTML = week[dayOfWeek].toUpperCase();
           cell3.innerHTML = total - nVisitors;
           cell4.innerHTML = nVisitors;
-          cell8.innerHTML = total;
+          cell8.innerHTML = `<a style='color: blue'>${total} <sup><i class='bi bi-box-arrow-up-right'></i></sup></a>`;
+          // cell9.innerHTML = "<i class='bi bi-box-arrow-up-right'></i>";
+          cell8.setAttribute("onclick", `shareDate("${date}")`);
           cell10.innerHTML = "<i class='bi bi-trash3'></i>";
           cell10.setAttribute("onclick", `removeDate("${date}","${day}")`);
-          cell9.innerHTML = "<i class='bi bi-box-arrow-up-right'></i>";
-          cell9.setAttribute("onclick", `shareDate("${date}")`);
         }
 
         let { x: xSortedV, y: ySortedV } = sortByX(xx, yyVisitors);
