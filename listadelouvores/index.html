@@ -326,7 +326,27 @@
       });
     }
 
-    function clean () {
+    function clean() {
+        Swal.fire({
+          title: `Confirmar limpeza?`,
+          text: "Todos os dados serão apagados!",
+          icon: "question",
+          showCancelButton: true,
+          reverseButtons: true,
+          confirmButtonText: `<i class="bi bi-check-lg"></i>&ensp;Sim, limpar`,
+          cancelButtonText: `<i class="bi bi-x-lg"></i>&ensp;Cancelar`,
+          customClass: {
+            confirmButton: "meu-confirmar",
+            cancelButton: "meu-cancelar",
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            cleanCb();
+          }
+        });
+    }
+
+    function cleanCb () {
       for (const key in list) {
         el = document.getElementById(key);
         el.innerHTML = key==="date"?"25/10/2025":"";
