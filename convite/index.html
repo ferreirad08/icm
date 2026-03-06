@@ -18,7 +18,6 @@
       }
 
       button {
-        font-family: "Times New Roman", Times, serif;
         font-size: 10px;
         color: #597b72;
         border: none;
@@ -29,6 +28,14 @@
         box-shadow: -1px 1px 4px 0px grey;
         margin-top: 10px;
       }
+
+    .meu-confirmar {
+      width: 100px;
+        height: 50px;
+        border-radius: 50px;
+        background-color: #597b72;
+        color: #fff;
+    }
   </style>
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -86,8 +93,12 @@
     function openPix() {
       Swal.fire({
         imageUrl: "https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/pix.png",
-        imageHeight: 1500,
-        imageAlt: "A tall image"
+        imageWidth: "100%",
+        imageAlt: "A tall image",
+        confirmButtonText: "Fechar",
+        customClass: {
+          confirmButton: "meu-confirmar",
+        },
       });
     }
 
