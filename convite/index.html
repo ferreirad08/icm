@@ -8,12 +8,76 @@
       background-repeat: no-repeat;
       background-size: 100%;
     }
+
+      table {
+        text-align: center;
+        border: none;
+        width: 95%;
+        margin-left: 2.5%;
+        margin-top: 500px;
+      }
+
+      button {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 10px;
+        color: #597b72;
+        border: none;
+        width: 70px;
+        height: 70px;
+        border-radius: 70px;
+        text-align: center;
+        box-shadow: -1px 1px 4px 0px grey;
+        margin-top: 10px;
+      }
   </style>
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title></title>
 </head>
 <body>
+    <table id="table" hidden>
+      <tr>
+        <td>
+          <button
+            onclick="window.location.href = 'https://ferreirad08.github.io/icm/'"
+          >
+            Confirmar presença
+          </button>
+        </td>
+        <td>
+          <button
+            onclick="window.location.href = 'https://ferreirad08.github.io/icm/'"
+          >
+            Lista de presentes
+          </button>
+        </td>
+        <td>
+          <button
+            onclick="window.location.href = 'https://ferreirad08.github.io/icm/'"
+          >
+            Presentear com pix
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button
+            onclick="window.location.href = 'https://ferreirad08.github.io/icm/'"
+          >
+            Localização cerimônia
+          </button>
+        </td>
+        <td>
+          <button
+            onclick="window.location.href = 'https://ferreirad08.github.io/icm/'"
+          >
+            Localização recepção
+          </button>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+
   <script>
     const url = "https://github.com/ferreirad08/icm/raw/refs/heads/main/convite/Asmuitasaguas.mp3";
     const audio = new Audio(url);
@@ -21,6 +85,7 @@
     document.addEventListener("click", () => {
       document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/convite.png')";
       audio.play();
+      document.getElementById("table").hidden = false;
     }, { once: true });
   </script> 
 </body>
