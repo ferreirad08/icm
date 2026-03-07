@@ -46,7 +46,7 @@
       <tr>
         <td>
           <button
-            onclick="window.location.href = 'https://ferreirad08.github.io/icm/'"
+            onclick="window.location.href = confirmation"
           >
             Confirmar presença
           </button>
@@ -87,6 +87,12 @@
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
+    const phone = "5592999712074";
+    const confirmation = `https://wa.me/${phone}?text=
+*Oi, Lucas*%0d%0a
+%0d%0a
+Confirmo minha presença.`;
+
     const url = "https://github.com/ferreirad08/icm/raw/refs/heads/main/convite/Asmuitasaguas.mp3";
     const audio = new Audio(url);
 
