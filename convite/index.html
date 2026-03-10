@@ -96,6 +96,10 @@ Confirmo minha presença.`;
     const url = "https://github.com/ferreirad08/icm/raw/refs/heads/main/convite/Asmuitasaguas.mp3";
     const audio = new Audio(url);
 
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
     function openPix() {
       Swal.fire({
         imageUrl: "https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/pix.png",
@@ -108,7 +112,9 @@ Confirmo minha presença.`;
       });
     }
 
-    document.addEventListener("click", () => {
+    document.addEventListener("click", async () => {
+      document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/noivos.jpg')";
+      await sleep(3000);
       document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/convite.png')";
       audio.play();
       document.getElementById("table").hidden = false;
