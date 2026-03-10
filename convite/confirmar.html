@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+
+<body>
+  <h2>Lista</h2>
+  <button onclick="confirmar()">Confirmar</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    const names = [
+      "David", "Carla", "Abner", "Darla"
+    ];
+
+    function confirmar() {
+      Swal.fire({
+        title: "Confirmar presença",
+        html: (() => {
+          let opt = "";
+          for (let i = 0; i < names.length; i++) {
+            opt = opt + `
+            <div>
+              <input type="checkbox" id="swal-input${i}" class="swal2-checkbox">
+              <label for="swal-input${i}">${names[i]}</label>
+            </div>
+            `;
+          }
+          return opt;
+        })(),
+        focusConfirm: false,
+        preConfirm: () => {
+          const a = [];
+          for (let i = 0; i < names.length; i++) {
+            if (Swal.getPopup().querySelector(`#swal-input${i}`).checked) {
+              a.push(names[i]);
+            }
+          }
+          return a;
+        }
+      }).then((result) => {
+        if (result.value) {
+          console.log(JSON.stringify(result.value));
+        }
+      });
+    }
+  </script>
+</body>
+</html>
