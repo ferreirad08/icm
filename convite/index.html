@@ -2,6 +2,7 @@
 
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
       background-image: url("https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/envelope.png");
@@ -30,6 +31,30 @@
         margin-top: 10px;
       }
 
+  #animation {
+    position: absolute;
+    bottom: 10%;
+    margin-left: 10px;
+              font-family: 'Great Vibes', cursive;
+              color: #386860;
+              font-size: 40px;
+              border-bottom: 5px solid #386860;
+              overflow: hidden;
+              animation: animate 2s linear forwards;
+            }
+
+            @keyframes animate {
+                0% {
+                    width: 0px;
+                    height: 0px;
+                }
+
+                100% {
+                  width: 350px;
+                  height: 50px;
+                }
+            }
+
     .meu-confirmar {
       width: 100px;
         height: 50px;
@@ -43,6 +68,10 @@
   <title></title>
 </head>
 <body>
+  <div id="animation" hidden>
+    Ana Clara & José Lucas
+  </div>
+
     <table id="table" hidden>
       <tr>
         <td>
@@ -194,7 +223,9 @@ Confirmo a presença dos seguintes convidados:%0d%0a%0d%0a`;
 
     document.addEventListener("click", async () => {
       document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/noivos.jpg')";
+      document.getElementById("animation").hidden = false;
       await sleep(3000);
+      document.getElementById("animation").hidden = true;
       document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/convite.png')";
       audio.play();
       document.getElementById("table").hidden = false;
