@@ -7,9 +7,10 @@
       background-image: url("https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/envelope.png");
       background-repeat: no-repeat;
       background-size: 100%;
+      font-family: Arial;
     }
 
-      table {
+      #table {
         text-align: center;
         border: none;
         width: 95%;
@@ -46,7 +47,7 @@
       <tr>
         <td>
           <button
-            onclick="window.location.href = confirmation"
+            onclick="confirmar()"
           >
             Confirmar presença
           </button>
@@ -87,14 +88,73 @@
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
+    const invites = {
+      dca: [
+        "David Alan de Oliveira Ferreira", "Carla Coelho Ferreira", "Abner Coelho Ferreira"
+      ]
+    };
+
+    const code = window.location.hash.slice(1);
     const phone = "5592999712074";
-    const confirmation = `https://wa.me/${phone}?text=
-*Oi, Lucas*%0d%0a
-%0d%0a
-Confirmo minha presença.`;
+    const allNames = invites[code];
 
     const url = "https://github.com/ferreirad08/icm/raw/refs/heads/main/convite/Asmuitasaguas.mp3";
     const audio = new Audio(url);
+
+    function ws(names) {
+      console.log(JSON.stringify(names));
+      const a = document.createElement("a");
+      a.href = `https://wa.me/${phone}?text=
+Oi, Lucas%0d%0a
+%0d%0a
+Confirmo a presença dos seguintes convidados:%0d%0a%0d%0a`;
+      for (const name of names) {
+        a.href = a.href + "*" + name + "*%0d%0a";
+      }
+      a.click();
+    }
+
+    function confirmar() {
+      Swal.fire({
+        title: "Confirmar presença",
+        text: "Indique quais convidados estarão presentes.",
+        html: (() => {
+          let opt = "<table style='text-align: left'>";
+          opt = opt + `Indique quais convidados estarão presentes.</br></br>`;
+          for (let i = 0; i < allNames.length; i++) {
+            opt = opt + `
+            <tr>
+              <td>
+                <input type="checkbox" id="swal-input${i}" class="swal2-checkbox">
+              </td>
+              <td>
+                <label for="swal-input${i}">${allNames[i]}</label>
+              </td>
+            </tr>
+            `;
+          }
+          return opt + "</table>";
+        })(),
+        focusConfirm: false,
+        preConfirm: () => {
+          const a = [];
+          for (let i = 0; i < allNames.length; i++) {
+            if (Swal.getPopup().querySelector(`#swal-input${i}`).checked) {
+              a.push(allNames[i]);
+            }
+          }
+          return a;
+        },
+        confirmButtonText: "Enviar",
+        customClass: {
+          confirmButton: "meu-confirmar",
+        },
+      }).then((result) => {
+        if (result.value) {
+          ws(result.value);
+        }
+      });
+    }
 
     function sleep(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
