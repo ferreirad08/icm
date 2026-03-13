@@ -88,13 +88,26 @@
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    const invites = {
-      dca: [
-        "David Alan de Oliveira Ferreira", "Carla Coelho Ferreira", "Abner Coelho Ferreira"
-      ],
-      eapb: ["Estevão", "Andreza", "Pedro", "Bernardo"],
-      jm: ["Juarez", "Marta Pereira de Oliveira"]
-    };
+    const namesList = `David
+Carla
+Abner
+
+Estevão
+Andreza
+Pedro
+Bernardo 
+
+Juarez
+Marta`;
+
+    const invites = {};
+
+    for (const family of namesList.split("\n\n")) {
+      let k = "";
+      const members = family.split("\n");
+      members.forEach(m => k = k + m[0]);
+      invites[k.toLowerCase()] = members;
+    }
 
     const code = window.location.hash.slice(1);
     const phone = "5592999712074";
