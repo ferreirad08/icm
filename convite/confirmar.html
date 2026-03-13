@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <style>
+    .meu-confirmar {
+      width: 100px;
+      height: 50px;
+      border-radius: 50px;
+      background-color: #597b72;
+      color: #fff;
+    }
+  </style>
   <meta charset="UTF-8">
   <title></title>
 </head>
@@ -12,23 +21,29 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     const names = [
-      "David", "Carla", "Abner", "Darla"
+      "David", "Carla Coelho Ferreira", "Abner Coelho Ferreira", "Darla"
     ];
 
     function confirmar() {
       Swal.fire({
         title: "Confirmar presença",
+        text: "Indique quais convidados estarão presentes.",
         html: (() => {
-          let opt = "";
+          let opt = "<table style='text-align: left'>";
+          opt = opt + `Indique quais convidados estarão presentes.</br></br>`;
           for (let i = 0; i < names.length; i++) {
             opt = opt + `
-            <div>
-              <input type="checkbox" id="swal-input${i}" class="swal2-checkbox">
-              <label for="swal-input${i}">${names[i]}</label>
-            </div>
+            <tr>
+              <td>
+                <input type="checkbox" id="swal-input${i}" class="swal2-checkbox">
+              </td>
+              <td>
+                <label for="swal-input${i}">${names[i]}</label>
+              </td>
+            </tr>
             `;
           }
-          return opt;
+          return opt + "</table>";
         })(),
         focusConfirm: false,
         preConfirm: () => {
@@ -39,7 +54,11 @@
             }
           }
           return a;
-        }
+        },
+        confirmButtonText: "Enviar",
+        customClass: {
+          confirmButton: "meu-confirmar",
+        },
       }).then((result) => {
         if (result.value) {
           console.log(JSON.stringify(result.value));
