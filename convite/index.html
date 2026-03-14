@@ -31,6 +31,24 @@
         margin-top: 10px;
       }
 
+  #touch {
+    position: absolute;
+    animation: is-rotating 3000ms infinite;
+    bottom: 30%;
+    font-family: 'Great Vibes', cursive;
+    color: #386860;
+    font-size: 40px;
+    width: 100%;
+    left: 0%;
+    text-align: center;
+  }
+
+  @keyframes is-rotating {
+    50% {
+      font-size: 30px;
+    }
+  }
+
   #animation {
     position: absolute;
     bottom: 10%;
@@ -70,6 +88,9 @@
 <body>
   <div id="animation" hidden>
     Ana Clara & José Lucas
+  </div>
+  <div id="touch">
+    Toque para abrir!
   </div>
 
     <table id="table" hidden>
@@ -124,7 +145,7 @@ Abner
 Estevão
 Andreza
 Pedro
-Bernardo 
+Bernardo
 
 Juarez
 Marta
@@ -225,6 +246,7 @@ Confirmo a presença dos seguintes convidados:%0d%0a%0d%0a`;
 
     document.addEventListener("click", async () => {
       audio.play();
+      document.getElementById("touch").hidden = true;
       document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/noivos.jpg')";
       document.getElementById("animation").hidden = false;
       await sleep(4000);
