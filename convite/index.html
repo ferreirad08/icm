@@ -222,12 +222,12 @@ Confirmo a presença dos seguintes convidados:%0d%0a%0d%0a`;
     }
 
     document.addEventListener("click", async () => {
+      audio.play();
       document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/noivos.jpg')";
       document.getElementById("animation").hidden = false;
       await sleep(4000);
       document.getElementById("animation").hidden = true;
       document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/convite.png')";
-      audio.play();
       document.getElementById("table").hidden = false;
     }, { once: true });
   </script> 
