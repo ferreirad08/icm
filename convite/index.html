@@ -11,6 +11,13 @@
       font-family: Arial;
     }
 
+    img {
+      width: 90%;
+      margin-top: 5%;
+      margin-left: 5%;
+      box-shadow: -1px 1px 4px 0px grey;
+    }
+
       #table {
         text-align: center;
         border: none;
@@ -51,7 +58,7 @@
 
   #animation {
     position: absolute;
-    bottom: 10%;
+    bottom: 15%;
     margin-left: 10px;
               font-family: 'Great Vibes', cursive;
               color: #386860;
@@ -92,6 +99,7 @@
   <div id="touch">
     Toque para abrir!
   </div>
+  <img id="noivos" src="https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/noivos.jpg" hidden>
 
     <table id="table" hidden>
       <tr>
@@ -183,6 +191,7 @@ Confirmo a presença dos seguintes convidados:%0d%0a%0d%0a`;
       for (const name of names) {
         a.href = a.href + "*" + name + "*%0d%0a";
       }
+      a.href = a.href + "%0d%0aLink utilizado: " + window.location.href
       a.click();
     }
 
@@ -247,10 +256,12 @@ Confirmo a presença dos seguintes convidados:%0d%0a%0d%0a`;
     document.addEventListener("click", async () => {
       audio.play();
       document.getElementById("touch").hidden = true;
-      document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/noivos.jpg')";
+      // document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/noivos.jpg')";
+      document.getElementById("noivos").hidden = false;
       document.getElementById("animation").hidden = false;
       await sleep(5000);
       document.getElementById("animation").hidden = true;
+      document.getElementById("noivos").hidden = true;
       document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/convite.png')";
       document.getElementById("table").hidden = false;
     }, { once: true });
