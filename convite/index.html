@@ -191,7 +191,7 @@ Confirmo a presença dos seguintes convidados:%0d%0a%0d%0a`;
       for (const name of names) {
         a.href = a.href + "*" + name + "*%0d%0a";
       }
-      a.href = a.href + "%0d%0aLink utilizado: " + window.location.href
+      a.href = a.href + "%0d%0aLink utilizado: " + window.location.href + window.location.hash
       a.click();
     }
 
