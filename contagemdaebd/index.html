@@ -180,7 +180,7 @@
         </td>
         <td colspan="4">Contagem da EBD</td>
         <td
-          onclick="window.location.href = `https://ferreirad08.github.io/icm/contagemdaebd/#en`"
+          onclick="_translate()"
         >
           <i class="bi bi-translate icon"></i>
         </td>
@@ -314,6 +314,14 @@
           if (item.innerHTML in i18n) {
             item.innerHTML = i18n[item.innerHTML];
           }
+        }
+      }
+
+      function _translate() {
+        if (window.location.hash === "#en") {
+          window.location.href = "https://ferreirad08.github.io/icm/contagemdaebd/";
+        } else {
+          window.location.href = "https://ferreirad08.github.io/icm/contagemdaebd/#en";
         }
       }
 
