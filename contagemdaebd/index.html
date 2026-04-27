@@ -310,7 +310,9 @@
        "Compartilhar": "Share",
       };
 
-      if (window.localStorage.getItem("i18n") === "en") {
+      const i18nValue = window.localStorage.getItem("i18n");
+
+      if (i18nValue === "en") {
         for (const item of [...document.getElementsByTagName("th"), ...document.getElementsByTagName("td")]) {
           if (item.innerHTML in i18n) {
             item.innerHTML = i18n[item.innerHTML];
@@ -319,7 +321,7 @@
       }
 
       function _translate() {
-        if (window.localStorage.getItem("i18n") === "en") {
+        if (i18nValue === "en") {
           window.localStorage.setItem("i18n", "ptbr");
         } else {
           window.localStorage.setItem("i18n", "en");;
