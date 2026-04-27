@@ -309,7 +309,7 @@
        "Compartilhar": "Share",
       };
 
-      if (window.location.hash === "#en") {
+      if (window.localStorage.getItem("i18n") === "en") {
         for (const item of [...document.getElementsByTagName("th"), ...document.getElementsByTagName("td")]) {
           if (item.innerHTML in i18n) {
             item.innerHTML = i18n[item.innerHTML];
@@ -318,10 +318,10 @@
       }
 
       function _translate() {
-        if (window.location.hash === "#en") {
-          window.location.href = "https://ferreirad08.github.io/icm/contagemdaebd/";
+        if (window.localStorage.getItem("i18n") === "en") {
+          window.localStorage.setItem("i18n", "ptbr");
         } else {
-          window.location.href = "https://ferreirad08.github.io/icm/contagemdaebd/#en";
+          window.localStorage.setItem("i18n", "en");;
         }
         window.location.reload();
       }
