@@ -273,14 +273,14 @@
     </table>
 
     <br />
-    <button id="button_0" onclick="clean()"><i class="bi bi-x-lg"></i>&ensp;Limpar</button>
+    <button id="button_0" onclick="clean()"><i class="bi bi-x-lg"></i>&ensp;<my-tag>Limpar</my-tag></button>
     <button
       onclick="window.location.href = `https://ferreirad08.github.io/icm/contagemdaebd/dashboard`"
     >
       <i class="bi bi-bar-chart"></i>&ensp;Dashboard
     </button>
     <button id="button_1" onclick="share()">
-      <i class="bi bi-share"></i>&ensp;Compartilhar
+      <i class="bi bi-share"></i>&ensp;<my-tag>Compartilhar</my-tag>
     </button>
 
     <br />
@@ -295,7 +295,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
-      const i18n = {
+      const words = {
        "IGREJA:": "CHURCH:",
        "DATA DO CULTO:": "SERVICE DATE:",
        "IGREJA": "MEMBER",
@@ -310,18 +310,22 @@
        "Compartilhar": "Share",
       };
 
-      const i18nValue = window.localStorage.getItem("i18n");
+      const i18n = window.localStorage.getItem("i18n");
 
-      if (i18nValue === "en") {
-        for (const item of [...document.getElementsByTagName("th"), ...document.getElementsByTagName("td")]) {
-          if (item.innerHTML in i18n) {
-            item.innerHTML = i18n[item.innerHTML];
+      if (i18n === "en") {
+        for (const item of [
+          ...document.getElementsByTagName("th"),
+          ...document.getElementsByTagName("td"),
+          ...document.getElementsByTagName("my-tag")
+        ]) {
+          if (item.innerHTML in words) {
+            item.innerHTML = words[item.innerHTML];
           }
         }
       }
 
       function _translate() {
-        window.localStorage.setItem("i18n", i18nValue === "en" ? "ptbr" : "en");
+        window.localStorage.setItem("i18n", i18n === "en" ? "ptbr" : "en");
         window.location.reload();
       }
 
