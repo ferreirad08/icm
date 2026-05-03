@@ -360,7 +360,7 @@
       const currentCountKey = "contagemdaebd";
       const historyCountKey = "ferreirad08-access";
 
-      setImage({ src: icmLogoUrlEn });
+      setImage({ src: i18n === "en" ? icmLogoUrlEn : icmLogoUrl });
 
       async function setImage(img) {
         document.getElementById("logo").src = img.src;
