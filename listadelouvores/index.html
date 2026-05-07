@@ -309,7 +309,7 @@
         html: `
           Insira o nome!
           </br></br>
-          <input id="filter-input" value="${list[key]}">
+          <input id="filter-input" value="${list[key] || ''}">
           <div id="filter-results"></div>`,
         showConfirmButton: false,
         showCancelButton: true,
