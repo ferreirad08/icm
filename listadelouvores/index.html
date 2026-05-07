@@ -148,6 +148,31 @@
         border-left: none;
         border-right: none;
       }
+
+      #filter-input {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #ffffff;
+        font-size: 18px;
+        border: none;
+      }
+
+      #filter-input:focus,
+      .meu-input-estilizado:focus {
+        outline: none;
+        border-bottom: 2px solid #151b54;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+      }
+
+      #filter-input,
+      .meu-input-estilizado {
+        border-radius: 0px;
+        border-bottom: 1px solid gray;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+      }
   </style>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -269,7 +294,51 @@
       }
     }
 
-    function nameInput(key) {
+    function saveName(key, name) {
+      // alert(key + ": " + name);
+      Swal.close();
+      list[key] = name.toUpperCase();
+      window.localStorage.setItem(storageKey, JSON.stringify(list));
+      el = document.getElementById(key);
+      el.innerHTML = list[key]
+    }
+
+    function setName(key) {
+      Swal.fire({
+        title: "Nome do louvor",
+        html: `
+          Insira o nome!
+          </br></br>
+          <input id="filter-input">
+          <div id="filter-results"></div>`,
+        showConfirmButton: false,
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        customClass: {
+          cancelButton: "meu-cancelar",
+        },
+        didOpen: () => {
+          const input = document.getElementById("filter-input");
+          const results = document.getElementById("filter-results");
+
+          input.addEventListener("input", () => {
+            results.innerHTML = "";
+
+            for (item of options) {
+              if (item.toLowerCase().includes(input.value.toLowerCase()))
+                results.innerHTML = results.innerHTML + `<div onclick="saveName('${key}','${item}')">${item}</div>`;
+            }
+          });
+        }
+      });
+    }
+
+    const options = [
+      "005 - CLAMANDO ESTOU",
+      "034 - QUANDO BUSCAMOS"
+    ];
+
+    function nameInputOld(key) {
         Swal.fire({
           title: "Nome da louvor",
           inputAttributes: {
@@ -296,7 +365,7 @@
         });
     }
 
-    function setName(key) {
+    function setNameOld(key) {
       return nameInput(key);
       const name = window.prompt("Insira o nome!", list[key]);
       if (name) {
