@@ -131,9 +131,13 @@
         border-right: none;
       }
 
+      :root {
+        --date-width: 250px;
+      }
+
       #swal-input-date {
-        width: 295px;
-        margin-left: calc(50% - 146.5px);
+        width: var(--date-width);
+        margin-left: calc(50% - var(--date-width) / 2);
         font-family: Arial, Helvetica, sans-serif;
         background-color: #ffffff;
         font-size: 15px;
