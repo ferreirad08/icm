@@ -335,7 +335,7 @@
           input.addEventListener("input", () => {
             results.innerHTML = "";
 
-            for (item of Object.values(hinos)) {
+            for (item of hinos) {
               if (item.toLowerCase().includes(input.value.toLowerCase()))
                 results.innerHTML = results.innerHTML + `<div onclick="saveName('${key}','${item}')">${item}</div>`;
             }
