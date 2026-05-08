@@ -306,12 +306,17 @@
     }
 
     function saveName(key, name) {
-      // alert(key + ": " + name);
       Swal.close();
-      list[key] = name.toUpperCase();
+
+      const [_number, _name] = name.split(" - ");
+      list[key[0] + "0"] = _number;
+      list[key] = _name.toUpperCase();
       window.localStorage.setItem(storageKey, JSON.stringify(list));
+
+      let el = document.getElementById(key[0] + "0");
+      el.innerHTML = list[key[0] + "0"];
       el = document.getElementById(key);
-      el.innerHTML = list[key]
+      el.innerHTML = list[key];
     }
 
     function setName(key) {
