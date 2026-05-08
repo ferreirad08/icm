@@ -474,12 +474,15 @@
       }
 
       function cleanCb() {
+        const empty_list = { date: getFormattedDate() };
+
         for (const key in list) {
-          el = document.getElementById(key);
-          el.innerHTML = key === "date" ? getFormattedDate() : "";
+          document.getElementById(key).innerHTML =
+            key === "date" ? empty_list.date : "";
         }
-        list = {};
-        window.localStorage.removeItem(storageKey);
+
+        // window.localStorage.removeItem(storageKey);
+        window.localStorage.setItem(storageKey, JSON.stringify(empty_list));
       }
 
       function getFormattedDate() {
