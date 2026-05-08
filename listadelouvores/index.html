@@ -376,12 +376,16 @@
             input.addEventListener("input", () => {
               results.innerHTML = "";
 
+              let count = 0;
               for (item of hinos) {
                 item = item.replace("'", " ");
-                if (item.toLowerCase().includes(input.value.toLowerCase()))
+                if (item.toLowerCase().includes(input.value.toLowerCase())) {
+                  count++;
+                  if (count > 5) break;
                   results.innerHTML =
                     results.innerHTML +
                     `<div onclick="saveName('${key}','${item}')">${item}</div>`;
+                }
               }
             });
           },
