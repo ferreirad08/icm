@@ -482,7 +482,8 @@
         }
 
         // window.localStorage.removeItem(storageKey);
-        window.localStorage.setItem(storageKey, JSON.stringify(empty_list));
+        list = empty_list;
+        window.localStorage.setItem(storageKey, JSON.stringify(list));
       }
 
       function getFormattedDate() {
