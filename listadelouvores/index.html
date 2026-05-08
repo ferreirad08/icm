@@ -336,6 +336,7 @@
             results.innerHTML = "";
 
             for (item of hinos) {
+              item = item.replace("'", "\'");
               if (item.toLowerCase().includes(input.value.toLowerCase()))
                 results.innerHTML = results.innerHTML + `<div onclick="saveName('${key}','${item}')">${item}</div>`;
             }
