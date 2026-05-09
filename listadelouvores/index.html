@@ -394,7 +394,8 @@
             const results = document.getElementById("filter-results");
 
             input.addEventListener("input", () => {
-              results.innerHTML = "";
+              results.innerHTML = key[1] === "0" ? "" : // is number
+                `<div onclick="saveName('${key}','* - ${input.value}')">${input.value}</div>`;
 
               let count = 0;
               for (item of hinos) {
