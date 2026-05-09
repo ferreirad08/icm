@@ -365,12 +365,16 @@
       }
 
       function setName(key) {
+        const type = key[1] === "0" ? "number" : "text";
+        const title = type === "number" ? "Número do louvor" : "Nome do louvor";
+        const subtitle = type === "number" ? "Insira o número!" : "Insira o nome!";
+
         Swal.fire({
-          title: "Nome do louvor",
+          title,
           html: `
-          Insira o nome!
+          ${subtitle}
           </br></br>
-          <input id="filter-input" value="${list[key] || ""}">
+          <input type="${type}" id="filter-input" value="${list[key] || ""}">
           <div id="filter-results"></div>`,
           showConfirmButton: false,
           showCancelButton: true,
@@ -386,7 +390,7 @@
               results.innerHTML = "";
 
               let count = 0;
-              for (item of options) {
+              for (item of hinos) {
                 item = item.replace("'", " ");
                 if (item.toLowerCase().includes(input.value.toLowerCase())) {
                   count++;
