@@ -136,7 +136,7 @@
       }
 
       :root {
-        --date-width: 250px;
+        --date-width: 230px;
       }
 
       #swal-input-date {
@@ -181,11 +181,17 @@
 
       #filter-results div {
         width: var(--date-width);
+        height: 30px;
+        font-size: 15px;
         margin-left: calc(50% - var(--date-width) / 2);
-        padding-top: 15px;
-        border-radius: 2px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 0px;
+        box-shadow: 0px 2px 2px -1px grey;
         text-align: left;
-        border: 1px solid gray;
+        /*border: 1px solid gray;*/
       }
     </style>
     <meta charset="utf-8" />
@@ -368,13 +374,14 @@
         const type = key[1] === "0" ? "number" : "text";
         const title = type === "number" ? "Número do louvor" : "Nome do louvor";
         const subtitle = type === "number" ? "Insira o número!" : "Insira o nome!";
+        const value = list[key] || "";
 
         Swal.fire({
           title,
           html: `
           ${subtitle}
           </br></br>
-          <input type="${type}" id="filter-input" value="${list[key] || ""}">
+          <input type="${type}" id="filter-input" value="${value}">
           <div id="filter-results"></div>`,
           showConfirmButton: false,
           showCancelButton: true,
@@ -405,7 +412,13 @@
         });
       }
 
-      const options = ["005 - CLAMANDO ESTOU", "034 - QUANDO BUSCAMOS"];
+      const options = [
+  "1 - O sangue de Jesus tem poder",
+  "2 - O sangue de Jesus tem poder para salvar",
+  "3 - Clamo a ti",
+  "4 - Quando te prostrares",
+  "5 - Clamando estou"
+      ];
 
       function nameInputOld(key) {
         Swal.fire({
