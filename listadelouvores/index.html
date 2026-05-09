@@ -335,7 +335,9 @@
       }
 
       function setNumber(key) {
+        return setName(key);
         return numberInput(key);
+
         const number = window.prompt("Insira o número!", list[key]);
         if (Number(number)) {
           list[key] = number;
@@ -350,13 +352,16 @@
 
         const [_number, _name] = name.split(" - ");
         list[key[0] + "0"] = _number;
-        list[key] = _name.toUpperCase();
+        list[key[0] + "1"] = _name.toUpperCase();
         window.localStorage.setItem(storageKey, JSON.stringify(list));
 
-        let el = document.getElementById(key[0] + "0");
+        let el;
+
+        el = document.getElementById(key[0] + "0");
         el.innerHTML = list[key[0] + "0"];
-        el = document.getElementById(key);
-        el.innerHTML = list[key];
+
+        el = document.getElementById(key[0] + "1");
+        el.innerHTML = list[key[0] + "1"];
       }
 
       function setName(key) {
@@ -381,7 +386,7 @@
               results.innerHTML = "";
 
               let count = 0;
-              for (item of hinos) {
+              for (item of options) {
                 item = item.replace("'", " ");
                 if (item.toLowerCase().includes(input.value.toLowerCase())) {
                   count++;
