@@ -370,6 +370,13 @@
         el.innerHTML = list[key[0] + "1"];
       }
 
+      function normalizeText(text) {
+        return text
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+      }
+
       function setName(key) {
         const type = key[1] === "0" ? "number" : "text";
         const title = type === "number" ? "Número do louvor" : "Nome do louvor";
@@ -400,7 +407,7 @@
               let count = 0;
               for (item of hinos) {
                 item = item.replace("'", " ");
-                if (item.toLowerCase().includes(input.value.toLowerCase())) {
+                if (normalizeText(item).includes(normalizeText(input.value))) {
                   count++;
                   if (count > 5) break;
                   results.innerHTML =
