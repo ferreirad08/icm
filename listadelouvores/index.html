@@ -579,19 +579,20 @@
       function drop_handler(ev) {
         ev.preventDefault();
 
-        const originId = ev.dataTransfer.getData("text");
-
-        // Names
-        ev.target.innerHTML = list[originId] || "";
-        document.getElementById(originId).innerHTML = list[ev.target.id] || "";
-        list[originId] = list[ev.target.id];
-        list[ev.target.id] = ev.target.innerHTML;
+        const originLine = ev.dataTransfer.getData("text")[0];
+        const targetLine = ev.target.id[0];
 
         // Numbers
-        document.getElementById(ev.target.id[0] + "0").innerHTML = list[originId[0] + "0"] || "";
-        document.getElementById(originId[0] + "0").innerHTML = list[ev.target.id[0] + "0"] || "";
-        list[originId[0] + "0"] = list[ev.target.id[0] + "0"];
-        list[ev.target.id[0] + "0"] = document.getElementById(ev.target.id[0] + "0").innerHTML;
+        document.getElementById(targetLine + "0").innerHTML = list[originLine + "0"] || "";
+        document.getElementById(originLine + "0").innerHTML = list[targetLine + "0"] || "";
+        list[originLine + "0"] = list[targetLine + "0"];
+        list[targetLine + "0"] = document.getElementById(targetLine + "0").innerHTML;
+
+        // Names
+        document.getElementById(targetLine + "1").innerHTML = list[originLine + "1"] || "";
+        document.getElementById(originLine + "1").innerHTML = list[targetLine + "1"] || "";
+        list[originLine + "1"] = list[targetLine + "1"];
+        list[targetLine + "1"] = document.getElementById(targetLine + "1").innerHTML;
 
         window.localStorage.setItem(storageKey, JSON.stringify(list));
       }
