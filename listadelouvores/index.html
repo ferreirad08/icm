@@ -576,23 +576,22 @@
         ev.dataTransfer.dropEffect = "move";
       }
 
+      function replaceLines(l0, l1) {
+        for (col of ["0", "1"]) {
+          document.getElementById(l1 + col).innerHTML = list[l0 + col] || "";
+          document.getElementById(l0 + col).innerHTML = list[l1 + col] || "";
+          list[l0 + col] = list[l1 + col];
+          list[l1 + col] = document.getElementById(l1 + col).innerHTML;
+        }
+      }
+
       function drop_handler(ev) {
         ev.preventDefault();
 
         const originLine = ev.dataTransfer.getData("text")[0];
         const targetLine = ev.target.id[0];
 
-        // Numbers
-        document.getElementById(targetLine + "0").innerHTML = list[originLine + "0"] || "";
-        document.getElementById(originLine + "0").innerHTML = list[targetLine + "0"] || "";
-        list[originLine + "0"] = list[targetLine + "0"];
-        list[targetLine + "0"] = document.getElementById(targetLine + "0").innerHTML;
-
-        // Names
-        document.getElementById(targetLine + "1").innerHTML = list[originLine + "1"] || "";
-        document.getElementById(originLine + "1").innerHTML = list[targetLine + "1"] || "";
-        list[originLine + "1"] = list[targetLine + "1"];
-        list[targetLine + "1"] = document.getElementById(targetLine + "1").innerHTML;
+        replaceLines(originLine, targetLine);
 
         window.localStorage.setItem(storageKey, JSON.stringify(list));
       }
