@@ -193,6 +193,11 @@
         text-align: left;
         /*border: 1px solid gray;*/
       }
+
+      .obs {
+        color: red;
+        margin-left: 10px;
+      }
     </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -233,41 +238,45 @@
       </tr>
       <tr>
         <td id="00" onclick="setNumber(this.id)"></td>
-        <td id="01" onclick="setName(this.id)" colspan="4"></td>
+        <td id="01" onclick="setName(this.id)" colspan="4" draggable="true" ondragstart="dragstart_handler(event);" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></td>
       </tr>
       <tr>
         <td id="10" onclick="setNumber(this.id)"></td>
-        <td id="11" onclick="setName(this.id)" colspan="4"></td>
+        <td id="11" onclick="setName(this.id)" colspan="4" draggable="true" ondragstart="dragstart_handler(event);" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></td>
       </tr>
       <tr>
         <td id="20" onclick="setNumber(this.id)"></td>
-        <td id="21" onclick="setName(this.id)" colspan="4"></td>
+        <td id="21" onclick="setName(this.id)" colspan="4" draggable="true" ondragstart="dragstart_handler(event);" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></td>
       </tr>
       <tr>
         <td id="30" onclick="setNumber(this.id)"></td>
-        <td id="31" onclick="setName(this.id)" colspan="4"></td>
+        <td id="31" onclick="setName(this.id)" colspan="4" draggable="true" ondragstart="dragstart_handler(event);" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></td>
       </tr>
       <tr>
         <td id="40" onclick="setNumber(this.id)"></td>
-        <td id="41" onclick="setName(this.id)" colspan="4"></td>
+        <td id="41" onclick="setName(this.id)" colspan="4" draggable="true" ondragstart="dragstart_handler(event);" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></td>
       </tr>
       <tr>
         <td id="50" onclick="setNumber(this.id)"></td>
-        <td id="51" onclick="setName(this.id)" colspan="4"></td>
+        <td id="51" onclick="setName(this.id)" colspan="4" draggable="true" ondragstart="dragstart_handler(event);" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></td>
       </tr>
       <tr>
         <td id="60" onclick="setNumber(this.id)"></td>
-        <td id="61" onclick="setName(this.id)" colspan="4"></td>
+        <td id="61" onclick="setName(this.id)" colspan="4" draggable="true" ondragstart="dragstart_handler(event);" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></td>
       </tr>
       <tr>
         <td id="70" onclick="setNumber(this.id)"></td>
-        <td id="71" onclick="setName(this.id)" colspan="4"></td>
+        <td id="71" onclick="setName(this.id)" colspan="4" draggable="true" ondragstart="dragstart_handler(event);" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></td>
       </tr>
       <tr>
         <td id="80" onclick="setNumber(this.id)"></td>
-        <td id="81" onclick="setName(this.id)" colspan="4"></td>
+        <td id="81" onclick="setName(this.id)" colspan="4" draggable="true" ondragstart="dragstart_handler(event);" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></td>
       </tr>
     </table>
+
+    <br />
+    <i class="obs">Segure o louvor para mover!</i>
+    <br />
 
     <br />
     <button id="button_0" onclick="clean()">
@@ -555,6 +564,36 @@
             navigator.share({ files, url: window.location.href });
           });
         });
+      }
+
+      function dragstart_handler(ev) {
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+        ev.dropEffect = "move";
+      }
+
+      function dragover_handler(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "move";
+      }
+
+      function drop_handler(ev) {
+        ev.preventDefault();
+
+        const originId = ev.dataTransfer.getData("text");
+
+        // Names
+        ev.target.innerHTML = list[originId] || "";
+        document.getElementById(originId).innerHTML = list[ev.target.id] || "";
+        list[originId] = list[ev.target.id];
+        list[ev.target.id] = ev.target.innerHTML;
+
+        // Numbers
+        document.getElementById(ev.target.id[0] + "0").innerHTML = list[originId[0] + "0"] || "";
+        document.getElementById(originId[0] + "0").innerHTML = list[ev.target.id[0] + "0"] || "";
+        list[originId[0] + "0"] = list[ev.target.id[0] + "0"];
+        list[ev.target.id[0] + "0"] = document.getElementById(ev.target.id[0] + "0").innerHTML;
+
+        window.localStorage.setItem(storageKey, JSON.stringify(list));
       }
 
       /*(async () => {
