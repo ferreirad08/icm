@@ -602,6 +602,12 @@
           }
         }
 
+        if (targetLine > originLine) {
+          for (let i = _min; i < _max - 1; i++) {
+            replaceLines(i, i + 1);
+          }
+        }
+
         window.localStorage.setItem(storageKey, JSON.stringify(list));
       }
 
