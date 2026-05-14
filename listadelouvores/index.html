@@ -195,7 +195,7 @@
       }
 
       .obs {
-        color: red;
+        color: blue;
         margin-left: 10px;
       }
     </style>
@@ -569,11 +569,15 @@
       function dragstart_handler(ev) {
         ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dropEffect = "move";
+        document.getElementById(
+          ev.dataTransfer.getData("text"))
+            .style.color = "blue";
       }
 
       function dragover_handler(ev) {
         ev.preventDefault();
         ev.dataTransfer.dropEffect = "move";
+        // ev.target.style.color = "red";
       }
 
       function replaceLines(l0, l1) {
@@ -587,6 +591,9 @@
 
       function drop_handler(ev) {
         ev.preventDefault();
+        document.getElementById(
+          ev.dataTransfer.getData("text"))
+            .style.color = "black";
 
         const originLine = ev.dataTransfer.getData("text")[0];
         const targetLine = ev.target.id[0];
