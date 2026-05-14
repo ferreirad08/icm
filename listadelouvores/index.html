@@ -195,7 +195,7 @@
       }
 
       .obs {
-        color: blue;
+        color: #151b54;
         margin-left: 10px;
       }
     </style>
@@ -566,18 +566,27 @@
         });
       }
 
+      let elold;
+
+      function test(elnew) {
+        if (elold) elold.style.color = "black";
+        elnew.style.color = "#151b54";
+        elold = elnew;
+      }
+
       function dragstart_handler(ev) {
         ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dropEffect = "move";
         document.getElementById(
           ev.dataTransfer.getData("text"))
-            .style.color = "blue";
+            .style.color = "#151b54";
       }
 
       function dragover_handler(ev) {
         ev.preventDefault();
         ev.dataTransfer.dropEffect = "move";
-        // ev.target.style.color = "red";
+        test(ev.target);
+        //ev.target.style.backgroundColor = "blue";
       }
 
       function replaceLines(l0, l1) {
@@ -594,6 +603,7 @@
         document.getElementById(
           ev.dataTransfer.getData("text"))
             .style.color = "black";
+        elold.style.color = "black";
 
         const originLine = ev.dataTransfer.getData("text")[0];
         const targetLine = ev.target.id[0];
