@@ -593,6 +593,15 @@
 
         replaceLines(originLine, targetLine);
 
+        const _min = Math.min(originLine, targetLine);
+        const _max = Math.max(originLine, targetLine);
+
+        if (originLine > targetLine) {
+          for (let i = _max; i > _min + 1; i--) {
+            replaceLines(i, i - 1);
+          }
+        }
+
         window.localStorage.setItem(storageKey, JSON.stringify(list));
       }
 
