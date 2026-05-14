@@ -195,7 +195,7 @@
       }
 
       .obs {
-        color: #151b54;
+        color: red;
         margin-left: 10px;
       }
     </style>
@@ -569,24 +569,22 @@
       let elold;
 
       function test(elnew) {
-        if (elold) elold.style.color = "black";
-        elnew.style.color = "#151b54";
+        if (elold) elold.style.paddingTop = "4px";
+        elnew.style.paddingTop = "20px";
         elold = elnew;
       }
 
       function dragstart_handler(ev) {
         ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dropEffect = "move";
-        document.getElementById(
-          ev.dataTransfer.getData("text"))
-            .style.color = "#151b54";
+        document.getElementById(ev.dataTransfer
+          .getData("text")).style.color = "red";
       }
 
       function dragover_handler(ev) {
         ev.preventDefault();
         ev.dataTransfer.dropEffect = "move";
         test(ev.target);
-        //ev.target.style.backgroundColor = "blue";
       }
 
       function replaceLines(l0, l1) {
@@ -600,10 +598,9 @@
 
       function drop_handler(ev) {
         ev.preventDefault();
-        document.getElementById(
-          ev.dataTransfer.getData("text"))
-            .style.color = "black";
-        elold.style.color = "black";
+        document.getElementById(ev.dataTransfer
+          .getData("text")).style.color = "black";
+        elold.style.paddingTop = "4px";
 
         const originLine = ev.dataTransfer.getData("text")[0];
         const targetLine = ev.target.id[0];
