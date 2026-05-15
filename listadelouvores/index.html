@@ -566,25 +566,38 @@
         });
       }
 
-      let elold;
+      let targetOld;
+      let idOrigin;
 
-      function test(elnew) {
-        if (elold) elold.style.paddingTop = "4px";
-        elnew.style.paddingTop = "30px";
-        elold = elnew;
+      function removeSpace(el) {
+        if (targetOld) {
+          targetOld.style.paddingBottom = "4px";
+          targetOld.style.paddingTop = "4px";
+        }
+      }
+
+      function insertSpace(el) {
+        if (el) {
+          if (el.id[0] > idOrigin[0]) el.style.paddingBottom = "30px";
+          if (el.id[0] < idOrigin[0]) el.style.paddingTop = "30px";
+          targetOld = el;
+        }
       }
 
       function dragstart_handler(ev) {
         ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dropEffect = "move";
-        document.getElementById(ev.dataTransfer
-          .getData("text")).style.color = "red";
+
+        idOrigin = ev.target.id;
+        ev.target.style.color = "gray";
       }
 
       function dragover_handler(ev) {
         ev.preventDefault();
         ev.dataTransfer.dropEffect = "move";
-        test(ev.target);
+
+        removeSpace();
+        insertSpace(ev.target);
       }
 
       function replaceLines(l0, l1) {
@@ -598,9 +611,10 @@
 
       function drop_handler(ev) {
         ev.preventDefault();
+
         document.getElementById(ev.dataTransfer
           .getData("text")).style.color = "black";
-        elold.style.paddingTop = "4px";
+        removeSpace();
 
         const originLine = ev.dataTransfer.getData("text")[0];
         const targetLine = ev.target.id[0];
