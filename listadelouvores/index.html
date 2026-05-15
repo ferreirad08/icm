@@ -566,51 +566,11 @@
         });
       }
 
-      let idSpace;
-      let idOrigin;
-
-      function removeSpace() {
-        if (idSpace) {
-          document.getElementById(idSpace[0] + 0).style.paddingBottom = "4px";
-          document.getElementById(idSpace[0] + 0).style.paddingTop = "4px";
-          document.getElementById(idSpace[0] + 1).style.paddingBottom = "4px";
-          document.getElementById(idSpace[0] + 1).style.paddingTop = "4px";
-        }
-      }
-
-      function insertSpace(idCurrent) {
-        if (idOrigin[0] > idCurrent[0]) {
-          document.getElementById(idCurrent[0] + 0).style.paddingTop = "30px";
-          document.getElementById(idCurrent[0] + 1).style.paddingTop = "30px";
-        }
-
-        if (idCurrent[0] > idOrigin[0]) {
-          document.getElementById(idCurrent[0] + 0).style.paddingBottom = "30px";
-          document.getElementById(idCurrent[0] + 1).style.paddingBottom = "30px";
-        }
-
-        idSpace = idCurrent;
-      }
+      let lastTarget;
 
       function setColor(color) {
-        document.getElementById(idOrigin[0] + 0).style.color = color;
-        document.getElementById(idOrigin[0] + 1).style.color = color;
-      }
-
-      function dragstart_handler(ev) {
-        ev.dataTransfer.setData("text/plain", ev.target.id);
-        ev.dropEffect = "move";
-
-        idOrigin = ev.target.id;
-        setColor("gray");
-      }
-
-      function dragover_handler(ev) {
-        ev.preventDefault();
-        ev.dataTransfer.dropEffect = "move";
-
-        removeSpace();
-        insertSpace(ev.target.id);
+        document.getElementById(lastTarget[0] + 0).style.color = color;
+        document.getElementById(lastTarget[0] + 1).style.color = color;
       }
 
       function replaceLines(l0, l1) {
@@ -622,32 +582,27 @@
         }
       }
 
+      function dragstart_handler(ev) {
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+        ev.dropEffect = "move";
+
+        lastTarget = ev.target.id;
+      }
+
+      function dragover_handler(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "move";
+
+        replaceLines(lastTarget[0], ev.target.id[0]);
+        setColor("black");
+        lastTarget = ev.target.id;
+        setColor("red");
+      }
+
       function drop_handler(ev) {
         ev.preventDefault();
 
         setColor("black");
-        removeSpace();
-
-        const originLine = ev.dataTransfer.getData("text")[0];
-        const targetLine = ev.target.id[0];
-
-        replaceLines(originLine, targetLine);
-
-        const _min = Math.min(originLine, targetLine);
-        const _max = Math.max(originLine, targetLine);
-
-        if (originLine > targetLine) {
-          for (let i = _max; i > _min + 1; i--) {
-            replaceLines(i, i - 1);
-          }
-        }
-
-        if (targetLine > originLine) {
-          for (let i = _min; i < _max - 1; i++) {
-            replaceLines(i, i + 1);
-          }
-        }
-
         window.localStorage.setItem(storageKey, JSON.stringify(list));
       }
 
