@@ -571,6 +571,9 @@
       function setColor(color) {
         document.getElementById(lastTarget[0] + 0).style.color = color;
         document.getElementById(lastTarget[0] + 1).style.color = color;
+
+        document.getElementById(lastTarget[0] + 0).style.backgroundColor = color === "white" ? "#151b54" : "white";
+        document.getElementById(lastTarget[0] + 1).style.backgroundColor = color === "white" ? "#151b54" : "white";
       }
 
       function replaceLines(l0, l1) {
@@ -596,7 +599,7 @@
         replaceLines(lastTarget[0], ev.target.id[0]);
         setColor("black");
         lastTarget = ev.target.id;
-        setColor("red");
+        setColor("white");
       }
 
       function drop_handler(ev) {
