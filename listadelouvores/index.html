@@ -442,8 +442,8 @@
             console.log('OK clicked');
           }
           if (result.isDenied) {
-            document.getElementById(key).innerHTML = "";
-            delete list[key];
+            document.getElementById(key[0] + 1).innerHTML = "";
+            delete list[key[0] + 1];
             document.getElementById(key[0] + 0).innerHTML = "";
             delete list[key[0] + 0];
             window.localStorage.setItem(storageKey, JSON.stringify(list));
