@@ -112,6 +112,14 @@
         border: 2px solid #151b54;
       }
 
+      .my-deny {
+        width: 145px;
+        border-radius: 20px !important;
+        background-color: white;
+        color: #b12d33;
+        border: 2px solid #b12d33;
+      }
+
       .meu-confirmar {
         width: 145px;
         border-radius: 20px !important;
@@ -195,7 +203,7 @@
       }
 
       .obs {
-        color: red;
+        color: #b12d33;
         margin-left: 10px;
       }
     </style>
@@ -402,8 +410,11 @@
           showConfirmButton: false,
           showCancelButton: true,
           cancelButtonText: "Cancelar",
+          showDenyButton: true,
+          denyButtonText: `<i class="bi bi-trash3"></i>&ensp;Excluir`,
           customClass: {
             cancelButton: "meu-cancelar",
+            denyButton: "my-deny"
           },
           didOpen: () => {
             const input = document.getElementById("filter-input");
@@ -426,16 +437,22 @@
               }
             });
           },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            console.log('OK clicked');
+          }
+          if (result.isDenied) {
+            document.getElementById(key).innerHTML = "";
+            delete list[key];
+            document.getElementById(key[0] + 0).innerHTML = "";
+            delete list[key[0] + 0];
+            window.localStorage.setItem(storageKey, JSON.stringify(list));
+          }
+          if (result.isDismissed) {
+            console.log('Cancelled');
+          }
         });
       }
-
-      const options = [
-  "1 - O sangue de Jesus tem poder",
-  "2 - O sangue de Jesus tem poder para salvar",
-  "3 - Clamo a ti",
-  "4 - Quando te prostrares",
-  "5 - Clamando estou"
-      ];
 
       function nameInputOld(key) {
         Swal.fire({
