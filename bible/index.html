@@ -47,7 +47,7 @@
       }
 
       #text {
-        text-align: center;
+        text-align: justify;
         font-size: 13px;
         box-shadow: -1px 1px 4px 0px grey;
         padding: 8px;
@@ -331,6 +331,11 @@
           element.style.backgroundColor === "rgb(187, 187, 187)"
             ? "rgb(255, 255, 255)"
             : "rgb(187, 187, 187)";
+
+        element.style.textDecoration = 
+          element.style.textDecoration === "underline"
+            ? ""
+            : "underline";
       }
 
       function toKey(value) {
