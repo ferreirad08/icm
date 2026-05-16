@@ -245,6 +245,8 @@
         apocalipse: "Apocalipse",
       };
 
+      const selectedColor = "rgb(220, 220, 220)";
+
       // let bible;
       // const url =
       //   "https://raw.githubusercontent.com/ferreirad08/ferreirad08.github.io/refs/heads/main/icm/bible/ARC.json";
@@ -328,9 +330,9 @@
 
       function selectionVerse(element) {
         element.style.backgroundColor =
-          element.style.backgroundColor === "rgb(187, 187, 187)"
+          element.style.backgroundColor === selectedColor
             ? "rgb(255, 255, 255)"
-            : "rgb(187, 187, 187)";
+            : selectedColor;
 
         element.style.textDecoration = 
           element.style.textDecoration === "underline"
@@ -358,7 +360,7 @@
           const verse =
             p.innerHTML.replace("<sup>", "[").replace("</sup>", "] ") + " ";
           all += verse;
-          if (p.style.backgroundColor === "rgb(187, 187, 187)") {
+          if (p.style.backgroundColor === selectedColor) {
             selected += verse;
             numbers.push(verse.split("[")[1].split("]")[0]);
           }
