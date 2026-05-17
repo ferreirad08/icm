@@ -315,6 +315,7 @@ const hinos = [
   "340 - Deus te guardará",
   "341 - Que consolação",
   "342 - Rocha minha",
+  "343 - Os que confiam no Senhor",
   "344 - Confio em Deus",
   "345 - Em nada ponho a minha fé",
   "346 - Se a fé por vezes falta",
