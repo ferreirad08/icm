@@ -366,14 +366,13 @@
 
       async function setImage(img) {
         document.getElementById("logo").src = img.src;
-        return;
 
-        const blob = await (await fetch(img.src)).blob();
-        const reader = new FileReader();
-        reader.onloadend = function () {
-          document.getElementById("logo").src = reader.result;
-        };
-        reader.readAsDataURL(blob);
+        // const blob = await (await fetch(img.src)).blob();
+        // const reader = new FileReader();
+        // reader.onloadend = function () {
+        //   document.getElementById("logo").src = reader.result;
+        // };
+        // reader.readAsDataURL(blob);
       }
 
       window.onload = function () {
