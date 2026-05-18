@@ -408,21 +408,16 @@
         reader.readAsDataURL(blob);
       }
 
-      function saveName(key, name) {
+      function saveText(key, text) {
         Swal.close();
 
-        const [_number, _name] = name.split(" - ");
-        list[key[0] + "0"] = _number;
-        list[key[0] + "1"] = _name.toUpperCase();
+        const [_number, _name] = text.split(" - ");
+
+        document.getElementById(key[0] + 1).innerHTML = _name.toUpperCase();
+        list[key[0] + 1] = _name.toUpperCase();
+        document.getElementById(key[0] + 0).innerHTML = _number;
+        list[key[0] + 0] = _number;
         window.localStorage.setItem(storageKey, JSON.stringify(list));
-
-        let el;
-
-        el = document.getElementById(key[0] + "0");
-        el.innerHTML = list[key[0] + "0"];
-
-        el = document.getElementById(key[0] + "1");
-        el.innerHTML = list[key[0] + "1"];
       }
 
       function normalizeText(text) {
@@ -463,7 +458,7 @@
               results.innerHTML =
                 key[1] === "0"
                   ? "" // is number
-                  : `<div onclick="saveName('${key}','* - ${input.value}')">${input.value}</div>`;
+                  : `<div onclick="saveText('${key}','* - ${input.value}')">${input.value}</div>`;
 
               let count = 0;
               for (item of hinos) {
@@ -473,7 +468,7 @@
                   if (count > 5) break;
                   results.innerHTML =
                     results.innerHTML +
-                    `<div onclick="saveName('${key}','${item}')">${item}</div>`;
+                    `<div onclick="saveText('${key}','${item}')">${item}</div>`;
                 }
               }
             });
