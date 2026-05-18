@@ -408,43 +408,6 @@
         reader.readAsDataURL(blob);
       }
 
-      // function numberInput(key) {
-      //   Swal.fire({
-      //     title: "Número do louvor",
-      //     text: "Insira o número!",
-      //     input: "number",
-      //     inputValue: list[key],
-      //     showCancelButton: true,
-      //     reverseButtons: true,
-      //     cancelButtonText: "Cancelar",
-      //     customClass: {
-      //       confirmButton: "meu-confirmar",
-      //       cancelButton: "meu-cancelar",
-      //       input: "meu-input-estilizado",
-      //     },
-      //   }).then((result) => {
-      //     if (Number(result.value)) {
-      //       list[key] = result.value;
-      //       window.localStorage.setItem(storageKey, JSON.stringify(list));
-      //       el = document.getElementById(key);
-      //       el.innerHTML = list[key];
-      //     }
-      //   });
-      // }
-
-      // function setNumber(key) {
-      //   setName(key);
-      //   return numberInput(key);
-
-      //   const number = window.prompt("Insira o número!", list[key]);
-      //   if (Number(number)) {
-      //     list[key] = number;
-      //     window.localStorage.setItem(storageKey, JSON.stringify(list));
-      //     el = document.getElementById(key);
-      //     el.innerHTML = list[key];
-      //   }
-      // }
-
       function saveName(key, name) {
         Swal.close();
 
@@ -527,48 +490,10 @@
             window.localStorage.setItem(storageKey, JSON.stringify(list));
           }
           if (result.isDismissed) {
-            console.log("Cancelled");
+            console.log("Cancelled.");
           }
         });
       }
-
-      // function nameInputOld(key) {
-      //   Swal.fire({
-      //     title: "Nome da louvor",
-      //     inputAttributes: {
-      //       placeholder: "Nome",
-      //     },
-      //     text: "Insira o nome!",
-      //     input: "text",
-      //     inputValue: list[key],
-      //     showCancelButton: true,
-      //     reverseButtons: true,
-      //     cancelButtonText: "Cancelar",
-      //     customClass: {
-      //       cancelButton: "meu-cancelar",
-      //       confirmButton: "meu-confirmar",
-      //       input: "meu-input-estilizado",
-      //     },
-      //   }).then((result) => {
-      //     if (result.value) {
-      //       list[key] = result.value.toUpperCase();
-      //       window.localStorage.setItem(storageKey, JSON.stringify(list));
-      //       el = document.getElementById(key);
-      //       el.innerHTML = list[key];
-      //     }
-      //   });
-      // }
-
-      // function setNameOld(key) {
-      //   return nameInput(key);
-      //   const name = window.prompt("Insira o nome!", list[key]);
-      //   if (name) {
-      //     list[key] = name.toUpperCase();
-      //     window.localStorage.setItem(storageKey, JSON.stringify(list));
-      //     el = document.getElementById(key);
-      //     el.innerHTML = list[key];
-      //   }
-      // }
 
       function setDate(key) {
         Swal.fire({
