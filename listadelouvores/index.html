@@ -465,7 +465,7 @@
 
               let count = 0;
 
-              for (item of [input.value, ...hinos]) {
+              for (item of [input.value, ...hinos, ...cias]) {
                 item = item.replace("'", " ");
                 if (normalizeText(item).includes(normalizeText(input.value))) {
                   count++;
