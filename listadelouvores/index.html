@@ -381,6 +381,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
+      const listaFinal = [...hinos, ...cias]
+        .sort((a, b) => a.localeCompare(b, 'pt-BR'));
+
       const storageKey = "listadelouvores";
       let list = window.localStorage.getItem(storageKey);
       list =
@@ -465,7 +468,7 @@
 
               let count = 0;
 
-              for (item of [input.value, ...hinos, ...cias]) {
+              for (item of [input.value, ...listaFinal]) {
                 item = item.replace("'", " ");
                 if (normalizeText(item).includes(normalizeText(input.value))) {
                   count++;
