@@ -411,7 +411,8 @@
       function saveText(key, text) {
         Swal.close();
 
-        const [_number, _name] = text.split(" - ");
+        let [_number, _name] = text.split(" - ");
+        _number = _number === "*" ? "" : _number;
 
         document.getElementById(key[0] + 1).innerHTML = _name.toUpperCase();
         list[key[0] + 1] = _name.toUpperCase();
