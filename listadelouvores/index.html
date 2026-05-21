@@ -411,8 +411,13 @@
       function saveText(key, text) {
         Swal.close();
 
-        let [_number, _name] = text.split(" - ");
-        _number = _number === "*" ? "" : _number;
+        let _number = "", _name = "";
+
+        if (text.includes(" - ")) {
+          [ _number, _name ] = text.split(" - ");
+        } else {
+          _name = text;
+        }
 
         document.getElementById(key[0] + 1).innerHTML = _name.toUpperCase();
         list[key[0] + 1] = _name.toUpperCase();
@@ -456,17 +461,15 @@
             const results = document.getElementById("filter-results");
 
             input.addEventListener("input", () => {
-              results.innerHTML =
-                key[1] === "0"
-                  ? "" // is number
-                  : `<div onclick="saveText('${key}','* - ${input.value}')">${input.value}</div>`;
+              results.innerHTML = "";
 
               let count = 0;
-              for (item of hinos) {
+
+              for (item of [input.value, ...hinos]) {
                 item = item.replace("'", " ");
                 if (normalizeText(item).includes(normalizeText(input.value))) {
                   count++;
-                  if (count > 5) break;
+                  if (count > 6) break;
                   results.innerHTML =
                     results.innerHTML +
                     `<div onclick="saveText('${key}','${item}')">${item}</div>`;
