@@ -30,6 +30,7 @@ const hinos = [
   "29 - Transborda-me, Senhor",
   "31 - Junto a ti suplico, ó Pai",
   "32 - O sangue de Jesus, vertido ali na cruz",
+  "33 - Eu me prostro em teu altar",
   "34 - Quando buscamos",
   "35 - A meu Senhor",
   "36 - Crucificado foi meu Jesus",
