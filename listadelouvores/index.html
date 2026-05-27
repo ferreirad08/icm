@@ -468,11 +468,19 @@
             const results = document.getElementById("filter-results");
 
             input.addEventListener("input", () => {
+              let ll;
+
+              if (Number.isNaN(input.value)) {
+                ll = [input.value, ...listaFinal]
+              } else {
+                ll = [...listaFinal]
+              }
+
               results.innerHTML = "";
 
               let count = 0;
 
-              for (item of [input.value, ...listaFinal]) {
+              for (item of ll) {
                 item = item.replace("'", " ");
                 if (normalizeText(item).includes(normalizeText(input.value))) {
                   count++;
