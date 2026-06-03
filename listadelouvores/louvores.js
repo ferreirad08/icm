@@ -300,6 +300,7 @@ const hinos = [
   "322 - Há um amigo sempre junto",
   "323 - Deus está presente sempre pronto a nos ajudar",
   "325 - Se hoje escutares",
+  "326 - Eu não saberia caminhar",
   "327 - Deus é contigo",
   "328 - Consolai, consolai o meu povo",
   "329 - Atua em nosso meio",
