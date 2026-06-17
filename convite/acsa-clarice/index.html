@@ -5,17 +5,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
-      background-image: url("https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/acsa-clarice/1781670884270.png");
+      background-image: url("https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/acsa-clarice/envelope.png");
       background-repeat: no-repeat;
       background-size: 100%;
-      font-family: Arial;
-    }
-
-    img {
-      width: 90%;
-      margin-top: 5%;
-      margin-left: 5%;
-      box-shadow: -1px 1px 4px 0px grey;
+      font-family: 'Great Vibes', cursive;
     }
 
       #table {
@@ -23,28 +16,31 @@
         border: none;
         width: 95%;
         margin-left: 2.5%;
-        margin-top: 500px;
+        margin-top: 380px;
       }
 
       button {
-        font-size: 10px;
-        color: #597b72;
+        font-family: 'Great Vibes', cursive;
+        font-size: 20px;
+        color: goldenrod;
         border: none;
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
         border-radius: 70px;
         text-align: center;
-        box-shadow: -1px 1px 4px 0px grey;
+        box-shadow: -2px 1px 4px 0px goldenrod;
         margin-top: 10px;
+        background-color: #597b72;
       }
 
   #touch {
     position: absolute;
     animation: is-rotating 3000ms infinite;
-    bottom: 30%;
+    top: 428px;
     font-family: 'Great Vibes', cursive;
-    color: #386860;
-    font-size: 40px;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    color: goldenrod;
+    font-size: 35px;
     width: 100%;
     left: 0%;
     text-align: center;
@@ -52,40 +48,29 @@
 
   @keyframes is-rotating {
     50% {
-      font-size: 30px;
+      font-size: 25px;
     }
   }
 
   #animation {
     position: absolute;
-    bottom: 15%;
-    margin-left: 10px;
-              font-family: 'Great Vibes', cursive;
-              color: #386860;
-              font-size: 40px;
-              border-bottom: 5px solid #386860;
-              overflow: hidden;
-              animation: animate 2s linear forwards;
-            }
-
-            @keyframes animate {
-                0% {
-                    width: 0px;
-                    height: 0px;
-                }
-
-                100% {
-                  width: 350px;
-                  height: 50px;
-                }
-            }
+    top: 300px;
+    margin-left: 10%;
+    width: 80%;
+    text-shadow: -2px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
+    color: goldenrod;
+    font-size: 40px;
+    overflow: hidden;
+  }
 
     .meu-confirmar {
+      font-size: 20px;
       width: 100px;
-        height: 50px;
-        border-radius: 50px;
-        background-color: #597b72;
-        color: #fff;
+      height: 50px;
+      border-radius: 50px;
+      box-shadow: -2px 1px 4px 0px goldenrod;
+      background-color: #597b72;
+      color: goldenrod;
     }
   </style>
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
@@ -94,157 +79,63 @@
 </head>
 <body>
   <div id="animation" hidden>
-    Ana Clara & José Lucas
+    17 de julho às 19h30min
   </div>
   <div id="touch">
-    Toque para abrir!
+    Clique aqui
   </div>
-  <img id="noivos" src="https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/noivos.jpg" hidden>
 
     <table id="table" hidden>
       <tr>
         <td>
           <button
-            onclick="confirmar()"
+            onclick="ws()"
           >
-            Confirmar presença
+            confirmar presença
           </button>
         </td>
-        <td>
-          <button
-            onclick="window.location.href = 'https://www.bemol.com.br/lp'"
-          >
-            Lista de presentes
-          </button>
-        </td>
-        <td>
-          <button
-            onclick="openPix()"
-          >
-            Presentear com pix
-          </button>
-        </td>
-      </tr>
-      <tr>
         <td>
           <button
             onclick="window.location.href = 'https://maps.app.goo.gl/focxhWRbngANU4hSA?g_st=aw'"
           >
-            Localização cerimônia
+            localização da festa
           </button>
         </td>
         <td>
           <button
-            onclick="window.location.href = 'https://ferreirad08.github.io/icm/'"
+            onclick="presentes()"
           >
-            Localização recepção
+            sugestões de presentes
           </button>
         </td>
+      </tr>
+      <tr>
         <td></td>
       </tr>
     </table>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    const namesList = `David
-Carla
-Abner
-
-Estevão
-Andreza
-Pedro
-Bernardo
-
-Juarez
-Marta
-
-Ednardo
-Gabriela
-Asafe
-Acsa
-
-Irian`;
-
-    const invites = {};
-
-    for (const family of namesList.split("\n\n")) {
-      let k = "";
-      const members = family.split("\n");
-      members.forEach(m => k = k + m[0]);
-      invites[k.toLowerCase()] = members;
-    }
-
     const code = window.location.hash.slice(1);
     const phone = "5592999712074";
-    const allNames = invites[code];
 
     const url = "https://github.com/ferreirad08/icm/raw/refs/heads/main/convite/Asmuitasaguas.mp3";
     const audio = new Audio(url);
 
-    function ws(names) {
-      console.log(JSON.stringify(names));
+    function ws() {
       const a = document.createElement("a");
-      a.href = `https://wa.me/${phone}?text=
-Oi, Lucas%0d%0a
-%0d%0a
-Confirmo a presença dos seguintes convidados:%0d%0a%0d%0a`;
-      for (const name of names) {
-        a.href = a.href + "*" + name + "*%0d%0a";
-      }
-      a.href = a.href + "%0d%0aLink utilizado: " + window.location.href + window.location.hash
+      a.href = `https://wa.me/${phone}?text=Olá, gostaria de confirmar presença no aniversário da Acsa.`;
       a.click();
-    }
-
-    function confirmar() {
-      Swal.fire({
-        title: "Confirmar presença",
-        text: "Indique quais convidados estarão presentes.",
-        html: (() => {
-          let opt = "<table style='text-align: left'>";
-          opt = opt + `Indique quais convidados estarão presentes.</br></br>`;
-          for (let i = 0; i < allNames.length; i++) {
-            opt = opt + `
-            <tr>
-              <td>
-                <input type="checkbox" id="swal-input${i}" class="swal2-checkbox">
-              </td>
-              <td>
-                <label for="swal-input${i}">${allNames[i]}</label>
-              </td>
-            </tr>
-            `;
-          }
-          return opt + "</table>";
-        })(),
-        focusConfirm: false,
-        preConfirm: () => {
-          const a = [];
-          for (let i = 0; i < allNames.length; i++) {
-            if (Swal.getPopup().querySelector(`#swal-input${i}`).checked) {
-              a.push(allNames[i]);
-            }
-          }
-          return a;
-        },
-        confirmButtonText: "Enviar",
-        customClass: {
-          confirmButton: "meu-confirmar",
-        },
-      }).then((result) => {
-        if (result.value) {
-          ws(result.value);
-        }
-      });
     }
 
     function sleep(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
-    function openPix() {
+    function presentes() {
       Swal.fire({
-        imageUrl: "https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/pix.png",
-        imageWidth: "100%",
+        imageUrl: "https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/acsa-clarice/presentes.png",
+        imageWidth: "80%",
         imageAlt: "A tall image",
         confirmButtonText: "Fechar",
         customClass: {
@@ -257,12 +148,12 @@ Confirmo a presença dos seguintes convidados:%0d%0a%0d%0a`;
       audio.play();
       document.getElementById("touch").hidden = true;
       // document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/noivos.jpg')";
-      document.getElementById("noivos").hidden = false;
+      // document.getElementById("noivos").hidden = false;
       document.getElementById("animation").hidden = false;
-      await sleep(5000);
-      document.getElementById("animation").hidden = true;
-      document.getElementById("noivos").hidden = true;
-      document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/convite.png')";
+      // await sleep(5000);
+      // document.getElementById("animation").hidden = true;
+      // document.getElementById("noivos").hidden = true;
+      document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/convite/acsa-clarice/data.png')";
       document.getElementById("table").hidden = false;
     }, { once: true });
   </script> 
