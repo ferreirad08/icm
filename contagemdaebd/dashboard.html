@@ -69,6 +69,26 @@
       .icon {
         font-size: 38px;
       }
+
+      .meu-confirmar,
+      .meu-cancelar {
+        border-radius: 20px !important;
+        font-size: 12px;
+        padding-left: 13px;
+        padding-right: 13px;
+        width: 130px;
+      }
+
+      .meu-confirmar {
+        background-color: #151b54;
+        color: white;
+      }
+
+      .meu-cancelar {
+        background-color: white;
+        color: #151b54;
+        border: 2px solid #151b54;
+      }
     </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -119,11 +139,12 @@
 
     <br />
     <br />
-    <a href="https://clustrmaps.com/site/1c7vm" title="ClustrMaps"
+    <!--<a href="https://clustrmaps.com/site/1c7vm" title="ClustrMaps"
       ><img
         src="//www.clustrmaps.com/map_v2.png?d=GlHQDJRwz29GdaHwakq85UYUP8IEe2XiZY6RwMKYfWU&cl=ffffff"
-    /></a>
+    /></a>-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script>
       const code = window.location.hash.slice(1);
@@ -482,9 +503,9 @@
           cell4.innerHTML = nVisitors;
           cell8.innerHTML = `<a style='color: blue'>${total} <sup><i class='bi bi-box-arrow-up-right'></i></sup></a>`;
           // cell9.innerHTML = "<i class='bi bi-box-arrow-up-right'></i>";
-          cell8.setAttribute("onclick", `shareDate("${date}")`);
+          cell8.setAttribute("onclick", `actions("${date}","${day}")`);
           cell10.innerHTML = "<i class='bi bi-trash3'></i>";
-          cell10.setAttribute("onclick", `removeDate("${date}","${day}")`);
+          // cell10.setAttribute("onclick", `removeDate("${date}","${day}")`);
         }
 
         let { x: xSortedV, y: ySortedV } = sortByX(xx, yyVisitors);
@@ -494,6 +515,28 @@
         updateCumulative(xSorted, ySorted);
         updateBar(xSorted, ySorted);
         // updateDoughnut(data.count);
+      }
+
+      function actions(date, day) {
+        Swal.fire({
+          title: `O que você deseja fazer com o registro?`,
+          text: day,
+          icon: "question",
+          showCancelButton: true,
+          reverseButtons: true,
+          confirmButtonText: `<i class="bi bi-check-lg"></i>&ensp;Ver detalhes`,
+          cancelButtonText: `<i class="bi bi-trash3"></i>&ensp;Apagar`,
+          customClass: {
+            confirmButton: "meu-confirmar",
+            cancelButton: "meu-cancelar",
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            shareDate(date);
+          } else if (result.isDismissed) {
+            removeDate(date, day);
+          }
+        });
       }
 
       function removeDate(date, day) {
