@@ -125,14 +125,14 @@
           <th>DATA</th>
           <th>DIA</th>
           <th>IGREJA</th>
-          <th>VISIT...</th>
+          <th>VISITANTES</th>
           <th>TOTAL</th>
-          <th colspan="2"></th>
+          <!--<th colspan="2"></th>-->
         </tr>
       </thead>
       <tbody id="tbody">
         <tr>
-          <td colspan="8">Não há dados</td>
+          <td colspan="6">Não há dados</td>
         </tr>
       </tbody>
     </table>
@@ -488,7 +488,7 @@
           const cell3 = row1.insertCell();
           const cell4 = row1.insertCell();
           const cell8 = row1.insertCell();
-          const cell9 = row1.insertCell();
+          // const cell9 = row1.insertCell();
           // const cell10 = row1.insertCell();
 
           const [_year, _month, _day] = day.split("-");
@@ -497,14 +497,14 @@
           xx.push(d);
 
           cell1.innerHTML = name;
-          cell2.innerHTML = d;
+          cell8.innerHTML = total;
           cell11.innerHTML = week[dayOfWeek].toUpperCase();
           cell3.innerHTML = total - nVisitors;
           cell4.innerHTML = nVisitors;
-          cell8.innerHTML = total; // `<a style='color: blue'>${total} <sup><i class='bi bi-box-arrow-up-right'></i></sup></a>`;
+          cell2.innerHTML = `<a style='color: blue'>${d} <sup><i class='bi bi-box-arrow-up-right'></i></sup></a>`;
           // cell9.innerHTML = 12; // "<i class='bi bi-box-arrow-up-right'></i>";
-          cell9.innerHTML = "<i class='bi bi-three-dots'></i>";
-          cell9.setAttribute("onclick", `actions("${date}","${day}")`);
+          //cell9.innerHTML = "<i class='bi bi-three-dots'></i>";
+          cell2.setAttribute("onclick", `actions("${date}","${day}")`);
           // cell10.setAttribute("onclick", `removeDate("${date}","${day}")`);
         }
 
