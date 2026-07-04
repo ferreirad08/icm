@@ -44,9 +44,14 @@
         width: 150px;
       }
 
+      :root{
+        --date-width: 230px;
+        --title-size: 15px;
+      }
+
       #title {
         padding-left: 15px;
-        font-size: 17px;
+        font-size: var(--title-size);
       }
 
       .icon {
@@ -73,17 +78,17 @@
       }
 
       #line2 td {
-        font-size: 17px;
+        font-size: var(--title-size);
       }
 
       #dateLabel {
         text-align: right !important;
-        font-size: 17px;
+        font-size: var(--title-size);
       }
 
       #date {
         padding-right: 15px;
-        font-size: 17px;
+        font-size: var(--title-size);
         text-decoration: underline;
         text-underline-offset: 3px;
       }
@@ -151,10 +156,6 @@
         border-right: none;
       }
 
-      :root {
-        --date-width: 230px;
-      }
-
       #swal-input-date {
         width: var(--date-width);
         margin-left: calc(50% - var(--date-width) / 2);
@@ -211,8 +212,10 @@
       }
 
       my-obs {
-        color: #151b54;
-        background-color: yellow;
+        color: gray;
+        font-style: italic;
+        /*font-weight: bold;*/
+        /*background-color: #fee135;*/
         margin-left: calc(50% - 175px);
         border-radius: 40px;
         padding: 5px 5px 5px 5px;
@@ -367,7 +370,7 @@
 
     <br />
     <my-obs>
-      <i class="bi bi-info-circle-fill"></i>
+      <i class="bi bi-info-circle"></i>
       Segure o louvor p/ arrastar e soltar
     </my-obs>
     <br />
