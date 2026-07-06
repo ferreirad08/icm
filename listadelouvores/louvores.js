@@ -37,6 +37,7 @@ const hinos = [
   "37 - Nesta hora esqueço o mundo",
   "38 - Pelo sangue de Jesus irei clamar",
   "39 - Jesus, tu és o meu Deus",
+  "40 - Oh! Que sangue poderoso",
   "41 - Além do véu eu quero estar",
   "42 - Senhor, suplico a ti em oração",
   "43 - Vou clamar",
