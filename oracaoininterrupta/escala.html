@@ -270,6 +270,14 @@
 
       const isOnwer = window.location.href in locations;
 
+      async function updateAccessHistory(href, data) {
+        let accessHistory = window.localStorage.getItem("accesshistory");
+        accessHistory = accessHistory === null ? {} : JSON.parse(accessHistory);
+        accessHistory[href] = data;
+        window.localStorage.setItem("accesshistory", JSON.stringify(accessHistory));
+        console.log(JSON.stringify(accessHistory));
+      }
+
       function getMessage() {
         const els = document.getElementsByTagName("label");
         return `📜 *ESCALA DA ORAÇÃO ININTERRUPTA*
@@ -543,8 +551,11 @@ ${window.location.href}`;
               confirmButton: "meu-confirmar",
             },
           });
-          window.location.href =
-            "https://ferreirad08.github.io/icm/oracaoininterrupta/";
+          window.location.href = "https://ferreirad08.github.io/icm/oracaoininterrupta/";
+          // window.location.href = `${window.location.href}#68f0108443b1c97be96a37c4`;
+          // window.location.reload();
+        } else {
+          await updateAccessHistory(window.location.href, data)
         }
 
         await initHeader(data);
