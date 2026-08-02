@@ -603,6 +603,7 @@ const hinos = [
   "654 - Grande é o Senhor e mui digno de ser louvado",
   "655 - Louvai, servos do Senhor",
   "656 - Grande é o Senhor",
+  "657 - Os céus proclamam",
   "658 - Meditarei nas maravilhas do Senhor",
   "659 - Celebrai com júbilo ao Senhor",
   "660 - O meu coração",
