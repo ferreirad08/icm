@@ -216,6 +216,7 @@ const hinos = [
   "222 - Eis que estou à porta",
   "224 - Era um pecador, andava sem Jesus",
   "225 - Jesus é melhor, sim, que ouro e bens",
+  "226 - O sentido de viver",
   "227 - Só Jesus te pode dar o que procuras",
   "228 - Entrega o teu caminho ao Senhor",
   "229 - Ao poço de Jacó chegou Jesus",
