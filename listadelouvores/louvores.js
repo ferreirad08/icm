@@ -578,6 +578,7 @@ const hinos = [
   "623 - Eu quero cantar de gozo e de paz",
   "624 - A minh'alma engrandece",
   "625 - Digno é Jesus",
+  "626 - Oh! Contemplai",
   "627 - Nós te adoramos, Senhor",
   "628 - Santo é seu nome",
   "629 - Que alegria",
