@@ -709,6 +709,7 @@ const hinos = [
   "749 - Manda fogo, Senhor",
   "750 - Deixa a glória de Deus brilhar",
   "753 - A noiva é a igreja",
+  "754 - Eu verei a árvore da vida",
   "755 - Somente pela fé",
   "756 - Quem cantar aqui se alegrará",
   "757 - Como aconteceu em Jerusalém",
