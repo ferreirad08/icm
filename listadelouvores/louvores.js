@@ -370,6 +370,7 @@ const hinos = [
   "389 - Senhor, o que é a nossa vida?",
   "390 - Cantarei a misericórdia",
   "391 - Cantarei a bondade e a justiça",
+  "392 - Eu só quero ser, Senhor",
   "393 - Quero ser fiel ao meu Senhor",
   "394 - Uma voz me disse lá do céu",
   "395 - Fala, Jesus querido",
