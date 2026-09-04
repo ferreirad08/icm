@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-size: 105%;
+        background-repeat: no-repeat;
+        background-position: -23px -15px;
+      }
+
+      table {
+        font-family: "Fira Sans", sans-serif;
+        border-collapse: collapse;
+        width: 92%;
+        margin-left: 3.75%;
+      }
+
+      tr:nth-child(2n + 1) {
+        background-color: #ddd;
+      }
+
+      td,
+      th {
+        border: 1px solid green;
+        text-align: center;
+        width: calc(100% / 5);
+        height: 25px;
+        font-size: 18px;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      div {
+        font-family: "Fira Sans", sans-serif;
+        width: 350px;
+        height: 25px;
+        font-size: 18px;
+        background-color: #ff584f;
+        color: black;
+        font-weight: bolder;
+        margin-left: 35px;
+        text-align: center;
+      }
+
+      h1 {
+        font-family: "Fira Sans", sans-serif;
+        width: 100%;
+        text-align: center;
+      }
+
+      .space {
+        background-color: transparent;
+        border-left: none;
+        border-right: none;
+      }
+
+      button {
+        height: 70px;
+        width: 40%;
+        font-size: 30px;
+        color: #ffffff;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 40px;
+        margin-top: 10px;
+        margin-left: 30%;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <br />
+    <h1>ESCALA DE SERVAS RESPONSÁVEIS</h1>
+    <br />
+
+    <table>
+      <tr>
+        <th colspan="5" onclick="set(this)" id="mes1">MÊS</th>
+      </tr>
+      <tr>
+        <th>DATA</th>
+        <td onclick="set(this)" id="td1">DD/MM/AAAA</td>
+        <td onclick="set(this)" id="td2">DD/MM/AAAA</td>
+        <td onclick="set(this)" id="td3">DD/MM/AAAA</td>
+        <td onclick="set(this)" id="td4">DD/MM/AAAA</td>
+      </tr>
+      <tr>
+        <th>PALAVRA</th>
+        <td onclick="set(this)" id="td6">Nome</td>
+        <td onclick="set(this)" id="td7">Nome</td>
+        <td onclick="set(this)" id="td8">Nome</td>
+        <td onclick="set(this)" id="td9">Nome</td>
+      </tr>
+      <tr>
+        <th>LOUVOR</th>
+        <td onclick="set(this)" id="td11">Nome</td>
+        <td onclick="set(this)" id="td12">Nome</td>
+        <td onclick="set(this)" id="td13">Nome</td>
+        <td onclick="set(this)" id="td14">Nome</td>
+      </tr>
+      <tr>
+        <th>PREPARO</th>
+        <td onclick="set(this)" id="td16">Nome</td>
+        <td onclick="set(this)" id="td17">Nome</td>
+        <td onclick="set(this)" id="td18">Nome</td>
+        <td onclick="set(this)" id="td19">Nome</td>
+      </tr>
+      <tr>
+        <td colspan="5" class="space"></td>
+      </tr>
+      <tr>
+        <th colspan="5" onclick="set(this)" id="mes2">MÊS</th>
+      </tr>
+      <tr>
+        <th>DATA</th>
+        <td onclick="set(this)" id="td21">DD/MM/AAAA</td>
+        <td onclick="set(this)" id="td22">DD/MM/AAAA</td>
+        <td onclick="set(this)" id="td23">DD/MM/AAAA</td>
+        <td onclick="set(this)" id="td24">DD/MM/AAAA</td>
+      </tr>
+      <tr>
+        <th>PALAVRA</th>
+        <td onclick="set(this)" id="td26">Nome</td>
+        <td onclick="set(this)" id="td27">Nome</td>
+        <td onclick="set(this)" id="td28">Nome</td>
+        <td onclick="set(this)" id="td29">Nome</td>
+      </tr>
+      <tr>
+        <th>LOUVOR</th>
+        <td onclick="set(this)" id="td31">Nome</td>
+        <td onclick="set(this)" id="td32">Nome</td>
+        <td onclick="set(this)" id="td33">Nome</td>
+        <td onclick="set(this)" id="td34">Nome</td>
+      </tr>
+      <tr>
+        <th>PREPARO</th>
+        <td onclick="set(this)" id="td36">Nome</td>
+        <td onclick="set(this)" id="td37">Nome</td>
+        <td onclick="set(this)" id="td38">Nome</td>
+        <td onclick="set(this)" id="td39">Nome</td>
+      </tr>
+      <tr>
+        <td colspan="5" class="space"></td>
+      </tr>
+      <tr>
+        <th colspan="5" onclick="set(this)" id="mes3">MÊS</th>
+      </tr>
+      <tr>
+        <th>DATA</th>
+        <td onclick="set(this)" id="td41">DD/MM/AAAA</td>
+        <td onclick="set(this)" id="td42">DD/MM/AAAA</td>
+        <td onclick="set(this)" id="td43">DD/MM/AAAA</td>
+        <td onclick="set(this)" id="td44">DD/MM/AAAA</td>
+      </tr>
+      <tr>
+        <th>PALAVRA</th>
+        <td onclick="set(this)" id="td46">Nome</td>
+        <td onclick="set(this)" id="td47">Nome</td>
+        <td onclick="set(this)" id="td48">Nome</td>
+        <td onclick="set(this)" id="td49">Nome</td>
+      </tr>
+      <tr>
+        <th>LOUVOR</th>
+        <td onclick="set(this)" id="td51">Nome</td>
+        <td onclick="set(this)" id="td52">Nome</td>
+        <td onclick="set(this)" id="td53">Nome</td>
+        <td onclick="set(this)" id="td54">Nome</td>
+      </tr>
+      <tr>
+        <th>PREPARO</th>
+        <td onclick="set(this)" id="td56">Nome</td>
+        <td onclick="set(this)" id="td57">Nome</td>
+        <td onclick="set(this)" id="td58">Nome</td>
+        <td onclick="set(this)" id="td59">Nome</td>
+      </tr>
+    </table>
+    <br />
+    <div>REUNIÃO QUINZENAL - 20 MINUTOS</div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <button onclick="downloadJpg()">Baixar Escala</button>
+    <br>
+    <input type="file" id="upload" accept="image/png, image/jpeg" onchange="loadFile(files)" />
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="background (1).js"></script>
+    <script>
+      document.body.style.backgroundImage = `url(${background})`;
+
+      const dateIds = [
+        "td1",
+        "td2",
+        "td3",
+        "td4",
+        "td5",
+        "td21",
+        "td22",
+        "td23",
+        "td24",
+        "td25",
+        "td41",
+        "td42",
+        "td43",
+        "td44",
+        "td45",
+      ];
+
+      let data = window.localStorage.getItem("servasdefrente");
+      data = data === null ? { cells: {}, quinzenais: {} } : JSON.parse(data);
+
+      for (const id in data.cells) {
+        document.getElementById(id).innerHTML = data.cells[id];
+      }
+
+      for (const id in data.quinzenais) {
+        document.getElementById(id).style.backgroundColor = data.quinzenais[id];
+      }
+
+      function set(obj) {
+        if ((name = window.prompt("Insira um texto", obj.innerHTML)) !== null) {
+          obj.innerHTML = name;
+          data.cells[obj.id] = name;
+
+          if (dateIds.includes(obj.id)) {
+            const result = window.confirm(
+              "Marcar reunião quinzenal neste dia?"
+            );
+            obj.style.backgroundColor = result
+              ? "rgb(255, 88, 79)"
+              : "rgba(255, 255, 255, 0.5)";
+            data.quinzenais[obj.id] = obj.style.backgroundColor;
+          }
+
+          window.localStorage.setItem("servasdefrente", JSON.stringify(data));
+        }
+      }
+
+      function loadFile(files) {
+        if (
+          files[0].type === 'image/png' ||
+          files[0].type === 'image/jpeg'
+        ) {
+          const reader = new FileReader();
+          reader.onload = async (evt) => {
+            // alert(evt.target.result);
+            document.body.style.backgroundImage = `url(${evt.target.result})`;
+          }
+          reader.readAsDataURL(files[0]);
+          document.getElementById('upload').value = null;
+        }
+      }
+
+      function downloadJpg() {
+        html2canvas(document.body, {
+          height: 665,
+        }).then(function (canvas) {
+          // document.body.appendChild(canvas);
+          const a = document.createElement("a");
+          a.download = "servasdefrente.jpg";
+          a.href = canvas.toDataURL("image/jpeg");
+          a.click();
+        });
+      }
+    </script>
+  </body>
+</html>
