@@ -75,7 +75,13 @@
         border-radius: 40px;
         font-weight: bold;
         margin-top: 20px;
-        margin-bottom: 25px;
+        margin-bottom: 0px;
+      }
+
+      input[type="button"][value="Cancelar"] {
+        background-color: #fff;
+        color: #151b54;
+        border: 2px solid #151b54;
       }
 
       :root{
@@ -139,6 +145,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Oração Ininterrupta</title>
   </head>
+
   <body>
     <table name="Header">
       <tr>
@@ -155,6 +162,7 @@
     <br />
     <br />
 
+    <div id="forms" hidden>
     <label>Igreja</label>
       <br />
       <input
@@ -177,18 +185,32 @@
         id="date0" />
       <input type="date"
         id="date1" />
-    <br />
+    
+      <br />
+      <input
+        type="button"
+        value="OK"
+        onclick="create()"
+      />
 
       <input
         type="button"
-        value="Criar escala"
-        onclick="create()"
+        value="Cancelar"
+        onclick="showList()"
       />
-    <br />
+    </div>
 
-    <label style="text-decoration: underline" onclick="showList()">Mostrar/ocultar minhas listas</label>
+    <input
+      id="newBtn"
+        type="button"
+        value="Criar nova escala"
+        onclick="showList()"
+      />
     <br /><br />
-    <div id="lists" hidden></div>
+
+    <label>Minhas escalas</label>
+    <br /><br />
+    <div id="lists"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -335,7 +357,8 @@
         `;
 
       function showList() {
-        lists.hidden = !lists.hidden;
+        forms.hidden = !forms.hidden;
+        newBtn.hidden = !newBtn.hidden;
       }
 
       async function initData(data) {
