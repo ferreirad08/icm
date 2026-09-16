@@ -33,7 +33,7 @@
       label {
         width: 346px;
         margin-left: calc(50% - 173px);
-        font-size: 10px;
+        font-size: 15px;
         color: #151b54;
         height: 30px;
       }
@@ -186,7 +186,7 @@
       />
     <br />
 
-    <label>Criadas por mim</label>
+    <label style="text-decoration: underline" onclick="showList()">Mostrar/ocultar minhas listas</label>
     <br /><br />
     <div id="lists"></div>
 
@@ -309,14 +309,21 @@
       let locations = window.localStorage.getItem(storageKey);
       locations = locations === null ? {} : JSON.parse(locations);
 
-      el = document.getElementById("lists");
       for (const list in locations) {
         const d = locations[list];
         const p = `${d.date0.split("-").reverse().join("/")} - ${d.date1.split("-").reverse().join("/")}`;
         const arrow = "<i class='bi bi-link-45deg'></i>";
-        el.innerHTML = el.innerHTML + `<a name="list" href="${list}"><b>${d.motivo.slice(0, 35)}...</b><br />${p} ${arrow}</a><br /><br /><br />`;
+        const item = `
+          <a name="list" href="${list}">
+            <b>${d.motivo.slice(0, 35)}...</b>
+            <br />
+            ${p} ${arrow}
+          </a>
+        `;
+        lists.innerHTML = item + `<br /><br /><br />` + lists.innerHTML;
       }
-      el.innerHTML = el.innerHTML + `
+
+      lists.innerHTML = lists.innerHTML + `
         <br />
         <a href="http://s01.flagcounter.com/more/rXr">
           <img
@@ -326,6 +333,10 @@
           >
         </a>
         `;
+
+      function showList() {
+        lists.hidden = !lists.hidden;
+      }
 
       async function initData(data) {
         Swal.fire({
