@@ -67,9 +67,12 @@
 
       input[type="button"] {
         background-color: #151b54;
-        color: #ffffff;
+        color: #fff;
         border: none;
-        width: calc(346px + 4px);
+        padding-left: 10px;
+        padding-right: 10px;
+        min-width: 110px;
+        /* width: calc(346px + 4px);*/
         margin-left: calc(50% - 174px);
         height: 40px;
         border-radius: 40px;
@@ -189,14 +192,14 @@
       <br />
       <input
         type="button"
-        value="OK"
-        onclick="create()"
+        value="Cancelar"
+        onclick="showList()"
       />
 
       <input
         type="button"
-        value="Cancelar"
-        onclick="showList()"
+        value="OK"
+        onclick="create()"
       />
     </div>
 
