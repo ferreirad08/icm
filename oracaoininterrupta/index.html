@@ -21,8 +21,14 @@
         left: 0%;
       }
 
+      :root{
+        --ok-bg: #e8f1fd;
+        --ok-fg: #151b54;
+        --font-size: 13px;
+      }
+
       table[name="Header"] td {
-        font-size: 15px;
+        font-size: var(--font-size);
         font-weight: bold;
         border: none;
         width: calc(100% / 3);
@@ -33,7 +39,7 @@
       label {
         width: 346px;
         margin-left: calc(50% - 173px);
-        font-size: 15px;
+        font-size: var(--font-size);
         color: #151b54;
         height: 30px;
       }
@@ -73,7 +79,6 @@
         padding-right: 10px;
         min-width: 110px;
         /* width: calc(346px + 4px);*/
-        margin-left: calc(50% - 174px);
         height: 40px;
         border-radius: 40px;
         font-weight: bold;
@@ -81,15 +86,14 @@
         margin-bottom: 0px;
       }
 
+      .btn-left {
+        margin-left: calc(50% - 174px);
+      }
+
       input[type="button"][value="Cancelar"] {
         background-color: #fff;
         color: #151b54;
         border: 2px solid #151b54;
-      }
-
-      :root{
-        --ok-bg: #e8f1fd;
-        --ok-fg: #151b54;
       }
 
       #lists {
@@ -112,7 +116,7 @@
 
       .icon {
         font-size: 40px;
-      }
+      
 
       .meu-confirmar {
         border-radius: 20px !important;
@@ -191,6 +195,7 @@
     
       <br />
       <input
+        class="btn-left"
         type="button"
         value="Cancelar"
         onclick="showList()"
@@ -204,7 +209,8 @@
     </div>
 
     <input
-      id="newBtn"
+        id="newBtn"
+        class="btn-left"
         type="button"
         value="Criar nova escala"
         onclick="showList()"
