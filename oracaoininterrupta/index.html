@@ -86,6 +86,10 @@
         margin-bottom: 0px;
       }
 
+      .btn-right {
+        margin-left: 140px;
+      }
+
       .btn-left {
         margin-left: calc(50% - 174px);
       }
@@ -208,17 +212,20 @@
       />
     </div>
 
-    <input
-        id="newBtn"
-        class="btn-left"
-        type="button"
-        value="Criar nova escala"
-        onclick="showList()"
-      />
-    <br /><br />
+    <br />
 
     <label>Minhas escalas</label>
-    <br /><br />
+
+    <input
+        id="newBtn"
+        class="btn-right"
+        type="button"
+        value="Nova escala"
+        onclick="showList()"
+      />
+
+    <br />
+    <br />
     <div id="lists"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
