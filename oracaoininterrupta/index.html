@@ -174,24 +174,24 @@
     <br />
 
     <div id="forms" hidden>
-    <label>Igreja</label>
+      <label>Igreja</label>
       <br />
       <input
-        type="text"
-        oninput="this.value = this.value.slice(0, 39)"
-        id="igreja" />
+          type="text"
+          oninput="this.value = this.value.slice(0, 39)"
+          id="igreja" />
       <br />
 
-    <label>Motivo</label>
+      <label>Motivo</label>
       <br />
       <input
-        type="text"
-        oninput="this.value = this.value.slice(0, 39)"
-        id="motivo" />
+          type="text"
+          oninput="this.value = this.value.slice(0, 39)"
+          id="motivo" />
       <br />
 
-    <label>Período (primeiro e último dia)</label>
-    <br />
+      <label>Período (primeiro e último dia)</label>
+      <br />
       <input type="date"
         id="date0" />
       <input type="date"
@@ -226,7 +226,10 @@
 
     <br />
     <br />
-    <div id="lists"></div>
+    <div id="lists">
+      Nenhuma escala foi encontrada.
+      <br /><br />
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -346,6 +349,10 @@
       const storageKey = "oracaoininterruptav3";
       let locations = window.localStorage.getItem(storageKey);
       locations = locations === null ? {} : JSON.parse(locations);
+
+      if (Object.keys(locations).length) {
+        lists.innerHTML = "";
+      }
 
       for (const list in locations) {
         const d = locations[list];
