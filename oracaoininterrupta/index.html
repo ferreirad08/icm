@@ -1,8 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html>
   <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
     <style>
       body {
         width: 384px;
@@ -21,7 +24,7 @@
         left: 0%;
       }
 
-      :root{
+      :root {
         --ok-bg: #e8f1fd;
         --ok-fg: #151b54;
         --font-size: 13px;
@@ -45,13 +48,13 @@
       }
 
       input[type="text"]:focus,
-      input[type="date"]:focus    {
+      input[type="date"]:focus {
         outline: none;
         border-bottom: 2px solid #151b54;
       }
 
       input[type="text"],
-      input[type="date"]    {
+      input[type="date"] {
         height: 30px;
         width: 346px;
         margin-left: calc(50% - 174px);
@@ -61,8 +64,8 @@
         background-color: transparent;
       }
 
-      input[type="date"]    {
-        width: calc(346px/2.16);
+      input[type="date"] {
+        width: calc(346px / 2.16);
       }
 
       input[type="button"] {
@@ -115,7 +118,6 @@
       .icon {
         font-size: 40px;
       }
-      
 
       .meu-confirmar {
         border-radius: 20px !important;
@@ -155,7 +157,9 @@
   <body>
     <table name="Header">
       <tr>
-        <td onclick="window.location.href = 'https://ferreirad08.github.io/icm/'">
+        <td
+          onclick="window.location.href = 'https://ferreirad08.github.io/icm/'"
+        >
           <i class="bi bi-house icon"></i>
         </td>
         <td colspan="4">Oração Ininterrupta</td>
@@ -172,26 +176,26 @@
       <label>Igreja</label>
       <br />
       <input
-          type="text"
-          oninput="this.value = this.value.slice(0, 39)"
-          id="igreja" />
+        type="text"
+        oninput="this.value = this.value.slice(0, 39)"
+        id="igreja"
+      />
       <br />
 
       <label>Motivo</label>
       <br />
       <input
-          type="text"
-          oninput="this.value = this.value.slice(0, 39)"
-          id="motivo" />
+        type="text"
+        oninput="this.value = this.value.slice(0, 39)"
+        id="motivo"
+      />
       <br />
 
       <label>Período (primeiro e último dia)</label>
       <br />
-      <input type="date"
-        id="date0" />
-      <input type="date"
-        id="date1" />
-    
+      <input type="date" id="date0" />
+      <input type="date" id="date1" />
+
       <br />
       <input
         class="btn-left"
@@ -200,11 +204,7 @@
         onclick="showList()"
       />
 
-      <input
-        type="button"
-        value="OK"
-        onclick="create()"
-      />
+      <input type="button" value="OK" onclick="create()" />
     </div>
 
     <br />
@@ -212,19 +212,23 @@
     <label>Minhas escalas</label>
 
     <input
-        id="newBtn"
-        class="btn-right"
-        type="button"
-        value="Nova escala"
-        onclick="showList()"
-      />
+      id="newBtn"
+      class="btn-right"
+      type="button"
+      value="Nova escala"
+      onclick="showList()"
+    />
 
     <br />
     <br />
     <div id="lists">
-      <div style="border: 1px solid #151b54; border-radius: 20px;">
-        <h3 style="width: 100%; text-align: center; color: #151b54;">Suas escalas irão aparecer aqui</h3>
-        <h4 style="width: 100%; text-align: center; color: gray">Crie uma escala para começar.</h4>
+      <div style="border: 1px solid #151b54; border-radius: 20px">
+        <h3 style="width: 100%; text-align: center; color: #151b54">
+          Suas escalas irão aparecer aqui
+        </h3>
+        <h4 style="width: 100%; text-align: center; color: gray">
+          Crie uma escala para começar.
+        </h4>
       </div>
       <br /><br />
     </div>
@@ -334,11 +338,13 @@
 
       const headers = {
         "Content-Type": "application/json",
-        "X-Access-Key": "$2a$10$LfB9pdrUiu066R6K8lu9cOnlKiXIdSxewVhiRKUfxAhQkpgNFCXxe",
+        "X-Access-Key":
+          "$2a$10$LfB9pdrUiu066R6K8lu9cOnlKiXIdSxewVhiRKUfxAhQkpgNFCXxe",
         "X-Bin-Name": "oracaoininterrupta",
       };
 
-      const scalePath = "https://ferreirad08.github.io/icm/oracaoininterrupta/escala";
+      const scalePath =
+        "https://ferreirad08.github.io/icm/oracaoininterrupta/escala";
 
       window.localStorage.removeItem("oracaoininterrupta");
       window.localStorage.removeItem("oracaoininterruptav1");
@@ -366,7 +372,9 @@
         lists.innerHTML = item + `<br /><br /><br />` + lists.innerHTML;
       }
 
-      lists.innerHTML = lists.innerHTML + `
+      lists.innerHTML =
+        lists.innerHTML +
+        `
         <br />
         <a href="http://s01.flagcounter.com/more/rXr">
           <img
@@ -399,10 +407,13 @@
           },
           body: JSON.stringify(data),
         });
-        
+
         Swal.close();
 
-        if (res.status === 200 && res.headers.get('Content-Type') === 'application/json; charset=utf-8') {
+        if (
+          res.status === 200 &&
+          res.headers.get("Content-Type") === "application/json; charset=utf-8"
+        ) {
           const location = scalePath + "#" + (await res.json()).metadata.id;
           locations[location] = data;
           window.localStorage.setItem(storageKey, JSON.stringify(locations));
