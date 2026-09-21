@@ -164,7 +164,9 @@
           <i class="bi bi-house icon"></i>
         </td>
         <td colspan="4">Oração Ininterrupta</td>
-        <td></td>
+        <td onclick="_translate()">
+          <i class="bi bi-translate icon"></i>
+        </td>
       </tr>
     </table>
 
@@ -385,6 +387,42 @@
           >
         </a>
         `;
+
+      const i18n = window.localStorage.getItem("i18n");
+      if (i18n === "en") _translate(false);
+
+      function _translate(reload=true) {
+        if (reload) {
+          window.localStorage.setItem("i18n", i18n === "en" ? "ptbr" : "en");
+          window.location.reload();
+          // i18n = window.localStorage.getItem("i18n");
+        }
+
+        const words = {
+          "Minhas escalas": "My schedules",
+          "Nova escala": "New schedule",
+          "Igreja": "Church",
+          "Motivo": "Reason",
+          "Período (primeiro e último dia)": "Period (first and last day)",
+          "Cancelar": "Cancel",
+        };
+
+        let elements = document.getElementsByTagName("label");
+
+        for (const el of elements) {
+          if (el.innerHTML in words) {
+            el.innerHTML = words[el.innerHTML];
+          }
+        }
+        
+        elements = document.getElementsByTagName("input");
+
+        for (const el of elements) {
+          if (el.value in words) {
+            el.value = words[el.value];
+          }
+        }
+      }
 
       function showList() {
         forms.hidden = !forms.hidden;
