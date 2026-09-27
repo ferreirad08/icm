@@ -236,6 +236,19 @@
         document.getElementById(id).style.backgroundColor = data.quinzenais[id];
       }
 
+      setImage({
+        src: "https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/servasdefrente/background2.jpg",
+      });
+
+      async function setImage(img) {
+        const blob = await (await fetch(img.src)).blob();
+        const reader = new FileReader();
+        reader.onloadend = function () {
+          document.body.style.backgroundImage = `url(${reader.result})`;
+        };
+        reader.readAsDataURL(blob);
+      }
+
       function set(obj) {
         if ((name = window.prompt("Insira um texto", obj.innerHTML)) !== null) {
           obj.innerHTML = name;
