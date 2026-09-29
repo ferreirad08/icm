@@ -78,7 +78,7 @@
       }
 
       img {
-        height: 60px;
+        height: 200px;
       }
     </style>
     <meta charset="utf-8" />
@@ -206,6 +206,10 @@
     <br />
     <img
       onclick="setImage(this)"
+      src="https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/servasdefrente/background1.jpeg"
+    />
+    <img
+      onclick="setImage(this)"
       src="https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/servasdefrente/background2.jpg"
     />
     <input type="file" id="upload" accept="image/png, image/jpeg" onchange="loadFile(files)" />
@@ -302,7 +306,7 @@
 
       function downloadJpg() {
         html2canvas(document.body, {
-          height: 665,
+          height: 565,
         }).then(function (canvas) {
           // document.body.appendChild(canvas);
           const a = document.createElement("a");
