@@ -62,7 +62,7 @@
         background-color: #151b54;
         color: #ffffff;
         border: none;
-        height: calc(40px * 2.6);
+        height: calc(40px * 2.5);
         border-radius: calc(100px * 2.6);
         font-size: 35px;
         padding-left: 40px;
@@ -195,6 +195,7 @@
     <br />
     <br />
     <button id="cbtn" onclick="_clear()"><i class="bi bi-x-lg"></i>&ensp;Limpar</button>
+    <button onclick="replaceBackground()"><i class='bi bi-images'></i>&ensp;Background</button>
     <button onclick="downloadJpg()"><i class='bi bi-download'></i>&ensp;Baixar</button>
 
     <br />
@@ -203,10 +204,7 @@
     <input type="file" id="upload" accept="image/png, image/jpeg" onchange="loadFile(files)" />
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="background (1).js"></script>
     <script>
-      document.body.style.backgroundImage = `url(${background})`;
-
       const dateIds = [
         "td1",
         "td2",
@@ -236,9 +234,15 @@
         document.getElementById(id).style.backgroundColor = data.quinzenais[id];
       }
 
-      setImage({
-        src: "https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/servasdefrente/background1.jpeg",
-      });
+      const fnames = ["background1.jpeg", "background2.jpg"];
+      let fname_i = 0;
+      replaceBackground();
+
+      function replaceBackground() {
+        fname_i = fname_i == fnames.length - 1 ? 0 : fname_i + 1;
+        const src = "https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/servasdefrente/" + fnames[fname_i];
+        setImage({ src });
+      }
 
       async function setImage(img) {
         const blob = await (await fetch(img.src)).blob();
