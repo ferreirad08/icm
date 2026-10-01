@@ -188,7 +188,9 @@
     </table>
 
     <br />
-    <div>REUNIÃO QUINZENAL - 20 MINUTOS</div>
+    <div onclick="setTxt(this)">
+      REUNIÃO QUINZENAL - 20 MINUTOS
+    </div>
 
     <br />
     <br />
@@ -242,6 +244,11 @@
         fname_i = fname_i == fnames.length - 1 ? 0 : fname_i + 1;
         const src = "https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/servasdefrente/" + fnames[fname_i];
         setImage({ src });
+      }
+
+      function setTxt(el) {
+        const newTxt = window.prompt("Insira uma observação!", el.innerHTML);
+        el.innerHTML = newTxt ? newTxt : el.innerHTML;
       }
 
       async function setImage(img) {
