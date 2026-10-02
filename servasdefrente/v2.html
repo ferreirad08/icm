@@ -200,12 +200,14 @@
     <button id="cbtn" onclick="_clear()"><i class="bi bi-x-lg"></i>&ensp;Limpar</button>
     <button onclick="replaceBackground()"><i class='bi bi-images'></i>&ensp;Background</button>
     <button onclick="downloadJpg()"><i class='bi bi-download'></i>&ensp;Baixar</button>
+    
+    <br />
+    <br />
+    <button onclick="autoFill()"><i class='bi bi-robot'></i>&ensp;Escala automática</button>
 
     <br />
     <br />
     <br />
-    <!--<input type="file" id="upload" accept="image/png, image/jpeg" onchange="loadFile(files)" />
-    -->
     <br />
     <br />
     <br />
@@ -284,19 +286,13 @@
         }
       }
 
-      function loadFile(files) {
-        if (
-          files[0].type === 'image/png' ||
-          files[0].type === 'image/jpeg'
-        ) {
-          const reader = new FileReader();
-          reader.onload = async (evt) => {
-            // alert(evt.target.result);
-            document.body.style.backgroundImage = `url(${evt.target.result})`;
-          }
-          reader.readAsDataURL(files[0]);
-          document.getElementById('upload').value = null;
-        }
+      function autoFill() {
+        const names = window.prompt("Insira os nomes separados por vírgula!\n\nEx.: Ana,Bia,Carla");
+        const nameList = names.split(",");
+        if (nameList.length < 3)
+          return window.alert("Insira no mínimo 3 nomes!");
+
+        window.alert(nameList.length);
       }
 
       function _clear() {
