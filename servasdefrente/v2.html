@@ -211,7 +211,8 @@
     <br />
     <br />
     <br />
-    <a href="https://info.flagcounter.com/3hCy"><img src="https://s01.flagcounter.com/count2/3hCy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+    <!--<a href="https://info.flagcounter.com/3hCy"><img src="https://s01.flagcounter.com/count2/3hCy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+    -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
       const dateIds = [
@@ -233,7 +234,7 @@
       ];
 
       let data = window.localStorage.getItem("servasdefrente");
-      data = data === null ? { cells: {}, quinzenais: {} } : JSON.parse(data);
+      data = data === null ? { cells: {}, quinzenais: {}, names: "" } : JSON.parse(data);
 
       for (const id in data.cells) {
         document.getElementById(id).innerHTML = data.cells[id];
@@ -286,13 +287,36 @@
         }
       }
 
-      function autoFill() {
-        const names = window.prompt("Insira os nomes separados por vírgula!\n\nEx.: Ana,Bia,Carla");
-        const nameList = names.split(",");
-        if (nameList.length < 3)
-          return window.alert("Insira no mínimo 3 nomes!");
+      const nameIds = [
+        "td6", "td7", "td8", "td9",
+        "td11", "td12", "td13", "td14", 
+        "td16", "td17", "td18", "td19",
 
-        window.alert(nameList.length);
+        "td26", "td27", "td28", "td29", 
+        "td31", "td32", "td33", "td34", 
+        "td36", "td37", "td38", "td39",
+
+        "td46", "td47", "td48", "td49", 
+        "td51", "td52", "td53", "td54", 
+        "td56", "td57", "td58", "td59"
+      ];
+
+      function autoFill() {
+        const names = window.prompt("Insira os nomes separados por vírgula!\n\nEx.: Ana,Bia,Carla", data.names);
+        if (!names) return;
+        const nameList = names.split(",");
+        if (nameList.length < 3 || nameList.length > 12) return window.alert("Insira entre 3 e 12 irmãs!");
+        data.names = names;
+
+        let i = 0;
+        for (let key of nameIds) {
+          data.cells[key] = nameList[i];
+          i++;
+          if (i === nameList.length) i = 0;
+        }
+
+        window.localStorage.setItem("servasdefrente", JSON.stringify(data));
+        window.location.reload();
       }
 
       function _clear() {
