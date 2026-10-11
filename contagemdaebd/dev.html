@@ -72,6 +72,20 @@
         border: 2px solid #151b54;
       }
 
+      select {
+        background-color: #151b54;
+        color: #fff;
+        border: none;
+        height: 40px;
+        border-radius: 40px;
+        font-weight: bold;
+        margin-top: -12px;
+        margin-left: calc(50% - 175px);
+        text-align: center;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
       a {
         margin-left: calc(50% - 175px);
       }
@@ -267,6 +281,12 @@
           <td id="td_9_2" class="sum"></td>
           <td id="td_9_3" class="sum"></td>
         </tr>
+        <tr hidden>
+          <td><b>TOTAL:</b></td>
+          <td id="memAmount" class="" onclick="setAmount(this)">0</td>
+          <td id="visAmount" class="" onclick="setAmount(this)">0</td>
+          <td id="totAmount" class="sum">0</td>
+        </tr>
       </tbody>
     </table>
 
@@ -274,6 +294,7 @@
     <button id="button_0" onclick="clean()">
       <i class="bi bi-x-lg"></i>&ensp;<my-tag>Limpar</my-tag>
     </button>
+
     <button
       onclick="
         window.location.href = `https://ferreirad08.github.io/icm/contagemdaebd/dashboard`
@@ -281,9 +302,16 @@
     >
       <i class="bi bi-bar-chart"></i>&ensp;Dashboard
     </button>
+
     <button id="button_1" onclick="share()">
       <i class="bi bi-share"></i>&ensp;<my-tag>Compartilhar</my-tag>
     </button>
+
+    <br /><br />
+    <select onchange="isNotEbd(this.value)">
+      <option>Escola bíblica</option>
+      <option>Culto diário</option>
+    </select>
 
     <br />
     <br />
@@ -379,6 +407,28 @@
         //   document.getElementById("logo").src = reader.result;
         // };
         // reader.readAsDataURL(blob);
+      }
+
+      function setAmount(el) {
+        el.innerHTML = prompt();
+        totAmount.innerHTML =
+          Number(memAmount.innerHTML) + Number(visAmount.innerHTML);
+        window.localStorage.setItem("amount", memAmount.innerHTML + "," + visAmount.innerHTML);
+      }
+
+      function isNotEbd(value) {
+        const isEbd = value === "Escola bíblica";
+        [memAmount.innerHTML, visAmount.innerHTML] = window.localStorage.getItem("amount").split(",");
+        totAmount.innerHTML =
+          Number(memAmount.innerHTML) + Number(visAmount.innerHTML);
+        table.rows[4].hidden = !isEbd;
+        table.rows[5].hidden = !isEbd;
+        table.rows[6].hidden = !isEbd;
+        table.rows[7].hidden = !isEbd;
+        table.rows[8].hidden = !isEbd;
+        table.rows[9].hidden = !isEbd;
+        table.rows[10].hidden = !isEbd;
+        table.rows[11].hidden = isEbd;
       }
 
       window.onload = function () {
