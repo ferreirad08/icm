@@ -418,7 +418,9 @@
 
       function isNotEbd(value) {
         const isEbd = value === "Escola bíblica";
-        [memAmount.innerHTML, visAmount.innerHTML] = window.localStorage.getItem("amount").split(",");
+        let saved = window.localStorage.getItem("amount");
+        saved = saved ? saved : "0,0";
+        [memAmount.innerHTML, visAmount.innerHTML] = saved.split(",");
         totAmount.innerHTML =
           Number(memAmount.innerHTML) + Number(visAmount.innerHTML);
         table.rows[4].hidden = !isEbd;
