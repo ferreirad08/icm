@@ -287,7 +287,7 @@
         }
       }
 
-      const nameIds = [
+      let nameIds = [
         "td6", "td7", "td8", "td9",
         "td11", "td12", "td13", "td14", 
         "td16", "td17", "td18", "td19",
@@ -301,12 +301,31 @@
         "td56", "td57", "td58", "td59"
       ];
 
+      const ids3 = [
+        "td6", "td11", "td8",
+        "td17", "td7", "td12", 
+        "td13", "td18", "td16", 
+        "td9", "td14", "td19",
+
+        "td36", "td26", "td31",
+        "td32", "td37", "td27",
+        "td28", "td33", "td38", 
+        "td39", "td29", "td34",
+
+        "td51", "td56", "td46", 
+        "td47", "td52", "td57", 
+        "td58", "td48", "td53", 
+        "td54", "td59", "td49"
+      ];
+
       function autoFill() {
         const names = window.prompt("Insira os nomes separados por vírgula!\n\nEx.: Ana,Bia,Carla", data.names);
         if (!names) return;
         const nameList = names.split(",");
         if (nameList.length < 3 || nameList.length > 12) return window.alert("Insira entre 3 e 12 irmãs!");
         data.names = names;
+
+        if (nameList.length === 3) nameIds = ids3;
 
         let i = 0;
         for (let key of nameIds) {
