@@ -54,8 +54,15 @@
       }
 
       .registerLink {
-        color: blue;
-        text-decoration: underline;
+        background-color: #151b54;
+        color: #fff;
+        border-radius: 15px;
+        padding-right: 10px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-left: 10px;
+        font-weight: bold;
+        /*text-decoration: underline;*/
       }
 
       .removeLink {
@@ -69,9 +76,9 @@
         color: #151b54;
       }
 
-      tr:nth-child(even) {
+      /*tr:nth-child(even) {
         background-color: #cccccc;
-      }
+      }*/
 
       th {
         background-color: #151b54;
@@ -85,13 +92,20 @@
         font-size: 13px;
       }
 
+      table[name="List"] tr {
+        border-radius: 4px;
+        box-shadow: -1px 1px 4px 0px grey;
+        height: 50px;
+      }
+
       table[name="List"] {
-        border-collapse: collapse;
+        /*border-collapse: collapse;
         border-radius: 4px;
         overflow: hidden;
+        box-shadow: -1px 1px 4px 0px grey;
+        */
         width: calc(346px + 4px);
         margin-left: calc(50% - 175px);
-        box-shadow: -1px 1px 4px 0px grey;
       }
 
       button:disabled {
@@ -241,11 +255,11 @@
 
     <table name="List">
       <thead>
-        <tr>
+        <!--<tr>
           <th>Horário</th>
           <th>Nome</th>
         </tr>
-      </thead>
+      </thead>-->
       <tbody id="tbody">
         <tr>
           <td colspan="2" style="color: black">Buscando a lista...</td>
@@ -491,7 +505,7 @@ ${window.location.href}`;
             }
           } else {
             cell.innerHTML =
-              "<a class='registerLink'>Clique para selecionar!</a>";
+              "<a class='registerLink'>Registrar</a>";
             cell.setAttribute("onclick", `register("${interval}")`);
           }
         }
