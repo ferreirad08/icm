@@ -338,6 +338,7 @@ const hinos = [
   "353 - Deixa-me chorar",
   "354 - Cristo me dará",
   "355 - Vencer, vencer",
+  "356 - O Senhor é o meu Pastor (Refrigera a minha alma)",
   "357 - O Senhor é o meu Pastor (Bondade e misericórdia)",
   "359 - Deus é nosso amparo, nossa fortaleza",
   "360 - Rochedo forte é o Senhor",
