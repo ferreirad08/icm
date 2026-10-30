@@ -16,7 +16,7 @@
         height: 216px;
       }
 
-      img,
+      #bg-img,
       div {
         width: 384px;
         border-bottom-right-radius: 100px;
@@ -52,8 +52,19 @@
         width: 384px;
         text-align: center;
         position: absolute;
-        bottom: 10px;
+        bottom: 150px;
         color: grey;
+      }
+
+      .adv {
+        position: absolute;
+        left: calc(50% - 192px);
+        bottom: 0px;
+        z-index: 99999;
+      }
+
+      .adv img {
+        width: 384px;
       }
     </style>
     <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
@@ -63,7 +74,7 @@
 
   <body>
     <div></div>
-    <img
+    <img id="bg-img"
       src="https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/assets/frente.jpg"
     />
 
@@ -110,7 +121,7 @@
           <button
             onclick="window.location.href = 'https://ferreirad08.github.io/icm/servasdefrente/'"
           >
-            Servas Res-<br />ponsáveis
+            Servas Responsá-<br />veis
           </button>
         </td>
         <td>
@@ -128,6 +139,13 @@
     </table>
 
     <label> &copy; 2023-2026 David Ferreira </label>
+
+    <a class="adv" href="mailto:ferreirad08@gmail.com">
+      <img
+        src="https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/assets/IMG-20261030-WA0020.jpg"
+      >
+    </a>
+
     <script>
       function sendEmail() {
         const a = document.createElement("a");
