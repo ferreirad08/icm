@@ -55,17 +55,6 @@
         bottom: 150px;
         color: grey;
       }
-
-      .adv {
-        position: absolute;
-        left: calc(50% - 192px);
-        bottom: 0px;
-        z-index: 99999;
-      }
-
-      .adv img {
-        width: 384px;
-      }
     </style>
     <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -132,7 +121,7 @@
             style="background-color: #fef2f2; color: #89191f"
             onclick="window.location.href = 'https://www.igrejacristamaranata.org.br/'"
           >
-            Site ICM
+            ICM Oficial
           </button>
         </td>
       </tr>
@@ -140,13 +129,29 @@
 
     <label> &copy; 2023-2026 David Ferreira </label>
 
-    <a class="adv" href="mailto:ferreirad08@gmail.com">
-      <img
-        src="https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/assets/advertising/available.jpg"
-      >
-    </a>
+    <script>
+      function addAdv() {
+        const a_adv = document.createElement("a");
+        a_adv.style = `
+        position: absolute;
+        left: calc(50% - 192px);
+        bottom: 0px;
+        z-index: 99999;
+        `;
+        a_adv.href = "mailto:ferreirad08@gmail.com";
+        const img_adv = document.createElement("img");
+        img_adv.style = `
+        width: 384px;
+        `;
+        img_adv.src = "https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/assets/advertising/available.jpg";
+        a_adv.appendChild(img_adv);
+        document.body.appendChild(a_adv);
+      }
+    </script>
 
     <script>
+      addAdv();
+
       function sendEmail() {
         const a = document.createElement("a");
         a.innerHTML = "Contato";
