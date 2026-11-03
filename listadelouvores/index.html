@@ -457,6 +457,7 @@
       }
 
       function saveText(key, text) {
+        autoDate();
         Swal.close();
 
         let _number = "AVULSO", _name = "";
@@ -535,9 +536,11 @@
           },
         }).then((result) => {
           if (result.isConfirmed) {
-            console.log("OK clicked");
+            console.log("result.isConfirmed");
           }
           if (result.isDenied) {
+            console.log("result.isDenied");
+            autoDate();
             document.getElementById(key[0] + 1).innerHTML = "";
             delete list[key[0] + 1];
             document.getElementById(key[0] + 0).innerHTML = "";
@@ -545,7 +548,7 @@
             window.localStorage.setItem(storageKey, JSON.stringify(list));
           }
           if (result.isDismissed) {
-            console.log("Cancelled.");
+            console.log("result.isDismissed");
           }
         });
       }
@@ -573,6 +576,13 @@
             el.innerHTML = list[key];
           }
         });
+      }
+
+      function autoDate() {
+        const key = "date";
+        list[key] = getFormattedDate();
+        window.localStorage.setItem(storageKey, JSON.stringify(list));
+        document.getElementById(key).innerHTML = list[key];
       }
 
       function clean() {
