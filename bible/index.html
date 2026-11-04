@@ -74,7 +74,7 @@
         width: 50px;
         margin-left: calc(50% - 20px + (350px * 1 / 3));
         position: fixed;
-        bottom: 50px;
+        bottom: 130px;
         height: 50px;
         border-radius: 50px;
         font-weight: bold;
@@ -180,11 +180,30 @@
         src="//www.clustrmaps.com/map_v2.png?d=-gE2WBX2iqT11fqJ_X2S2NzJillfBJUIYlQJI9MSPF0&cl=ffffff"
     /></a>-->
 
-    <br />
-    <br />
+    <br /><br /><br /><br /><br /><br />
 
     <button id="share-button" onclick="share()"><i class="bi bi-image"></i></button>
 
+    <script>
+      function addAdv(left='-17px') {
+        const a_adv = document.createElement("a");
+        a_adv.style = `
+        position: fixed;
+        /*left: calc(50% - 192px);*/
+        left: ${left};
+        bottom: 0px;
+        z-index: 99999;
+        `;
+        a_adv.href = "mailto:ferreirad08@gmail.com";
+        const img_adv = document.createElement("img");
+        img_adv.style = `
+        width: 384px;
+        `;
+        img_adv.src = "https://raw.githubusercontent.com/ferreirad08/icm/refs/heads/main/assets/advertising/available.jpg";
+        a_adv.appendChild(img_adv);
+        document.body.appendChild(a_adv);
+      }
+    </script>
     <script src="ARC.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -287,6 +306,7 @@
       //   });
       // }
 
+      addAdv();
       main();
 
       function main() {
