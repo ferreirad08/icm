@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+</head>
+<body>
+<div id="reader" style="width: 800px"></div>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<script>
+const scanner = new Html5Qrcode("reader");
+
+scanner.start(
+    { facingMode: "environment" },
+    { fps: 10, qrbox: 250 },
+    (decodedText) => {
+        console.log("QR Code:", decodedText);
+        scanner.stop();
+    },
+    (error) => {}
+);
+</script>
+</body>
+</html>
